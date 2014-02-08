@@ -15,8 +15,8 @@ protected $db_host;
 protected $db_name;
 protected $db_user;
 protected $db_pass;
-const CONNECT_FAILED = "Connection with MySQL failed.";
-const DB_FAILED = "Create BD.";
+protected $CONNECT_FAILED = "Connection with MySQL failed.";
+protected $DB_FAILED = "Create BD.";
 
 public function __construct ( $db_host , $db_name , $db_user, $db_pass) {
 $this -> db_host = $db_host ;
@@ -26,8 +26,8 @@ $this -> db_pass = $db_pass ;
 }
 
 public function connectMySQL() {
-if(!mysql_connect($db_host, $db_user, $db_pass)) throw new ABException(CONNECT_FAILED);
-if (!mysql_select_db($db_name)) throw new ABException(DB_FAILED);
+if(!mysql_connect($db_host, $db_user, $db_pass)) throw new ABException($CONNECT_FAILED);
+if (!mysql_select_db($db_name)) throw new ABException($DB_FAILED);
 }
 
 public function addTrades($trades) {
