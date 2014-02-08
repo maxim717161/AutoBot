@@ -1,4 +1,4 @@
 <?php
-$datetime = getime();
+$datetime = getdate();
 echo $datetime['hours'].":".$datetime['minutes'].":".$datetime['seconds'];
 ?>
