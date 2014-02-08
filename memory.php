@@ -15,8 +15,8 @@ protected $db_host;
 protected $db_name;
 protected $db_user;
 protected $db_pass;
-protected const CONNECT_FAILED = "Connection with MySQL failed.";
-protected const DB_FAILED = "Create BD.";
+const CONNECT_FAILED = "Connection with MySQL failed.";
+const DB_FAILED = "Create BD.";
 
 public function __construct ( $db_host , $db_name , $db_user, $db_pass) {
 $this -> db_host = $db_host ;
