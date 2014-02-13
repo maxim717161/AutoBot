@@ -20,13 +20,14 @@ protected $DB_FAILED = "Create BD.";
 protected $Tables = array("ticks" => array("dt" => "int", "vAsk" => "int", "vBid"=>"int", "pOpen" => "int",
                                            "pHigh" => "int", "pLow" => "int", "pClose" => "int"));
 public function __construct ( $db_host , $db_name , $db_user, $db_pass) {
-$this -> db_host = $db_host;
-$this -> db_name = $db_name;
-$this -> db_user = $db_user;
-$this -> db_pass = $db_pass;
+$this -> $db_host = $db_host;
+$this -> $db_name = $db_name;
+$this -> $db_user = $db_user;
+$this -> $db_pass = $db_pass;
 }
 
 public function connectMySQL() {
+echo $db_host;
 if(!mysql_connect($db_host, $db_user, $db_pass)) throw new Exception($CONNECT_FAILED);
 if (!mysql_select_db($db_name)) throw new Exception($DB_FAILED);
 $q = mysql_query("SHOW TABLES");
