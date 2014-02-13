@@ -17,17 +17,22 @@ protected $db_user;
 protected $db_pass;
 protected $CONNECT_FAILED = "Connection with MySQL failed.";
 protected $DB_FAILED = "Create BD.";
+protected $Tables = array();
 
 public function __construct ( $db_host , $db_name , $db_user, $db_pass) {
-$this -> db_host = $db_host ;
+$this -> db_host = $db_host;
 $this -> db_name = $db_name;
 $this -> db_user = $db_user;
-$this -> db_pass = $db_pass ;
+$this -> db_pass = $db_pass;
+$Tables['ticks'] = array("dt" => "int", "vAsk" => "int", "vBid"=>"int", "pOpen" => "int", "pHigh" => "int", 
+"pLow" => "int", "pClose" => "int");
 }
 
 public function connectMySQL() {
 if(!mysql_connect($db_host, $db_user, $db_pass)) throw new ABException($CONNECT_FAILED);
 if (!mysql_select_db($db_name)) throw new ABException($DB_FAILED);
+$q = mysql_query("SHOW TABLES");
+echo "В таблице mytable ".mysql_num_rows($q)." записей";
 }
 
 public function addTrades($trades) {
