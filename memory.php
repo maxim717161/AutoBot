@@ -27,8 +27,8 @@ $this -> db_pass = $db_pass;
 }
 
 public function connectMySQL() {
-if(!mysql_connect($db_host, $db_user, $db_pass)) throw new ABException($CONNECT_FAILED);
-if (!mysql_select_db($db_name)) throw new ABException($DB_FAILED);
+if(!mysql_connect($db_host, $db_user, $db_pass)) throw new Exception($CONNECT_FAILED);
+if (!mysql_select_db($db_name)) throw new Exception($DB_FAILED);
 $q = mysql_query("SHOW TABLES");
 echo "В таблице mytable ".mysql_num_rows($q)." записей";
 }
@@ -62,9 +62,4 @@ $db_user, $db_pass);
 if (mysql_select_db($db_name) == false) {
 // create table
 }
-
-}
-}
-// Exception
-class ABMemoryException extends Exception{}
 ?>
