@@ -61,5 +61,5 @@ $result = mysql_connect($db_host,
 $db_user, $db_pass);
 if (mysql_select_db($db_name) == false) {
 // create table
-}
+}}}
 ?>
