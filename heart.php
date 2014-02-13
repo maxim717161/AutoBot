@@ -6,6 +6,6 @@ $myMemory = ABMemory('mysql.serversfree.com', 'u366911672_ab', 'u366911672_ab', 
 try {
   $myMemory -> connectMySQL();
 } catch (ABMemoryException $e) {
-  echo $e -> getMessage();
+  echo $e;
 }
 ?>
