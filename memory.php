@@ -31,8 +31,9 @@ if(!mysql_connect($this->db_host, $this->db_user, $this->db_pass)) throw new Exc
 if (!mysql_select_db($this->db_name)) throw new Exception($DB_FAILED);
 $q = mysql_query("SHOW TABLES");
 $n = mysql_num_rows($q);
-for($i =0; $i < $n; $i++) {}
-echo "В таблице mytable ".mysql_num_rows($q)." записей";
+for($i =0; $i < $n; $i++) {$row = mysql_fetch_array($result);}
+array_diff_assoc();
+echo "В ytable ".mysql_num_rows($q)." записей";
 if()
 }
 
