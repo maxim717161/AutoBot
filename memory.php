@@ -16,8 +16,8 @@ protected $db_name;
 protected $db_user;
 protected $db_pass;
 protected $CONNECT_FAILED = "Unable to connect to DB: ";
-protected $DB_FAILED = "Unable to select DB ($this->db_name): ";
-protected $QUERY_FAILED = "Could not successfully run query ($sql) from DB: ";
+protected $DB_FAILED = "Unable to select DB: ";
+protected $QUERY_FAILED = "Could not successfully run query from DB: ";
 protected $Tables = array("ticks" => array("dt" => "int", "vAsk" => "int", "vBid"=>"int", "pOpen" => "int",
                                            "pHigh" => "int", "pLow" => "int", "pClose" => "int"));
 public function __construct ( $db_host , $db_name , $db_user, $db_pass) {
