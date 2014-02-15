@@ -30,7 +30,10 @@ public function connectMySQL() {
 if(!mysql_connect($this->db_host, $this->db_user, $this->db_pass)) throw new Exception($CONNECT_FAILED);
 if (!mysql_select_db($this->db_name)) throw new Exception($DB_FAILED);
 $q = mysql_query("SHOW TABLES");
+$n = mysql_num_rows($q);
+for($i =0; $i < $n; $i++) {}
 echo "В таблице mytable ".mysql_num_rows($q)." записей";
+if()
 }
 
 public function addTrades($trades) {
