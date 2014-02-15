@@ -15,8 +15,9 @@ protected $db_host;
 protected $db_name;
 protected $db_user;
 protected $db_pass;
-protected $CONNECT_FAILED = "Connection with MySQL failed.";
-protected $DB_FAILED = "Create BD.";
+protected $CONNECT_FAILED = "Unable to connect to DB: ";
+protected $DB_FAILED = "Unable to select DB ($this->db_name): ";
+protected $QUERY_FAILED = "Could not successfully run query ($sql) from DB: ";
 protected $Tables = array("ticks" => array("dt" => "int", "vAsk" => "int", "vBid"=>"int", "pOpen" => "int",
                                            "pHigh" => "int", "pLow" => "int", "pClose" => "int"));
 public function __construct ( $db_host , $db_name , $db_user, $db_pass) {
@@ -27,14 +28,35 @@ $this ->db_pass = $db_pass;
 }
 
 public function connectMySQL() {
-if(!mysql_connect($this->db_host, $this->db_user, $this->db_pass)) throw new Exception($CONNECT_FAILED);
-if (!mysql_select_db($this->db_name)) throw new Exception($DB_FAILED);
-$q = mysql_query("SHOW TABLES");
-$n = mysql_num_rows($q);
-for($i =0; $i < $n; $i++) {$row = mysql_fetch_array($result);}
-array_diff_assoc();
-echo "В ytable ".mysql_num_rows($q)." записей";
-if()
+if(!mysql_connect($this->db_host, $this->db_user, $this->db_pass)) throw new Exception($CONNECT_FAILED.mysql_error());
+if (!mysql_select_db($this->db_name)) throw new Exception($DB_FAILED.mysql_error());
+$sql = "SHOW TABLES";
+$result = mysql_query($sql);
+if(!$result) throw new Exception($QUERY_FAILED.mysql_error());
+$newTables = array();
+if ( mysql_num_rows ( $result) > 0) {
+    //while($row = mysql_fetch_row ( $result ) {
+         for($tables=array();
+$row=mysql_fetch_assoc($res);
+$tables[]=$row);
+print_r($tables);
+   // }
+//$newTables= array_diff_assoc
+( $array1 , $array2 );                                           
+} else {
+    $newTables = $Tables;
+}
+mysql_free_result ( $result );
+// добавляем таблицы
+foreach($newTables as $key1=>$val1) {
+$sql = "CREATE TABLE
+`”.$key1.”` (";
+foreach($val1 as $key2 => $val2) {
+$sql .= "`".$key2."` ".$val2.",";
+}
+$sql.=")";
+echo $sql;
+}
 }
 
 public function addTrades($trades) {
