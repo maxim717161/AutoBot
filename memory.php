@@ -1,8 +1,7 @@
 <?php
-
 class ABMemory {
-const TRADES_DATETIME = 'date';
-const TRADES_AMOUNT = 'amount';
+  const TRADES_DATETIME = 'date';
+  const TRADES_AMOUNT = 'amount';
 const TRADES_PRICE = 'price';
 const TRADES_TRADE_TYPE = 'trade_type';
 const TRADES_BID = 'bid';
@@ -21,10 +20,10 @@ protected $QUERY_FAILED = "Could not successfully run query from DB: ";
 protected $Tables = array("ticks" => array("dt" => "int", "vAsk" => "int", "vBid"=>"int", "pOpen" => "int",
                                            "pHigh" => "int", "pLow" => "int", "pClose" => "int"));
 public function __construct ( $db_host , $db_name , $db_user, $db_pass) {
-$this ->db_host = $db_host;
-$this ->db_name = $db_name;
-$this ->db_user = $db_user;
-$this ->db_pass = $db_pass;
+  $this ->db_host = $db_host;
+  $this ->db_name = $db_name;
+  $this ->db_user = $db_user;
+  $this ->db_pass = $db_pass;
 }
 
 public function connectMySQL() {
@@ -41,11 +40,11 @@ if ( mysql_num_rows ( $result) > 0) {
    // }
 //$newTables= array_diff_assoc( $array1 , $array2 );                                           
 } else {
-    $newTables = $Tables;
+    $newTables = $this->Tables;
 }
 mysql_free_result ( $result );
 // добавляем таблицы
-foreach($newTables as $key1=>$val1) {
+foreach($newTables as $key1 => $val1) {
 $sql = "CREATE TABLE`”.$key1.”` (";
 foreach($val1 as $key2 => $val2) {
 $sql .= "`".$key2."` ".$val2.",";
