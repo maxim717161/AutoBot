@@ -45,7 +45,7 @@ class ABMemory {
     mysql_free_result ( $result );
     // добавляем таблицы
     foreach($newTables as $key1 => $val1) {
-      $sql = "CREATE TABLE ".$key1." ";
+      $sql = "CREATE TABLE ".$key1." (";
       $addZ = false;
       foreach($val1 as $key2 => $val2) {
         if($addZ) $sql .= ", ";
