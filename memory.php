@@ -53,7 +53,8 @@ class ABMemory {
         $addZ = true;
       }
       $sql.=")";
-      echo $sql;
+      $result = mysql_query($sql);
+    if(!$result) throw new Exception($QUERY_FAILED.mysql_error());
     }
   }
   
