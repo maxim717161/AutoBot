@@ -34,11 +34,10 @@ class ABMemory {
     if(!$result) throw new Exception($QUERY_FAILED.mysql_error());
     $newTables = array();
     if ( mysql_num_rows ( $result) > 0) {
-      //while($row = mysql_fetch_row ( $result ) {
-      for($tables=array();$row=mysql_fetch_assoc($result);$tables[]=$row);
-      print_r($tables);
-      // }
-      //$newTables= array_diff_assoc( $array1 , $array2 );                                           
+for($tbl=array();$row=mysql_fetch_row($result);$tbl[]=$row);
+      print_r($tbl);
+//$newTables=array_diff( $Tables , $tbl );    
+print_r($newTables);                                       
     } else {
       $newTables = $this->Tables;
     }
