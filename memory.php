@@ -35,9 +35,9 @@ class ABMemory {
     $newTables = array();
     if ( mysql_num_rows ( $result) > 0) {
 for($tbl=array();$row=mysql_fetch_row($result);$tbl[$row[0]]=array());
-print_r($tbl);
-$new_Tables=array_diff_assoc( $this->Tables , $tbl );
-print_r($new_Tables);                                       
+$newTables=array_diff_assoc( $this->Tables , $tbl );
+$see_Tables=array_intersect_assoc($this->Tables, $tbl);
+print_r($see_Tables);                                       
     } else {
       $newTables = $this->Tables;
     }
