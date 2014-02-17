@@ -17,7 +17,7 @@ class ABMemory {
   protected $CONNECT_FAILED = "Unable to connect to DB: ";
   protected $DB_FAILED = "Unable to select DB: ";
   protected $QUERY_FAILED = "Could not successfully run query from DB: ";
-  protected $Tables = array("ticks" => array("dt" => "int", "vAsk" => "int", "vBid"=>"int", "pOpen" => "int","pHigh" => "int", "pLow" => "int", "pClose" => "int"));
+  protected $Tables = array("ticks" => array("UNIQUE time" => "DATETIME", "vAsk" => "DOUBLE", "vBid"=>"DOUBLE", "pOpen" => "DOUBLE","pHigh" => "DOUBLE", "pLow" => "DOUBLE", "pClose" => "DOUBLE"), "users"=> array("UNIQUE email"=>"CHAR(255)", "pass"=>"CHAR(255)", "isVer"=>"BIT","lastEnter"=>"DATETIME"));
   
   public function __construct ( $db_host , $db_name , $db_user, $db_pass) {
     $this ->db_host = $db_host;
@@ -35,7 +35,7 @@ class ABMemory {
     $newTables = array();
     if ( mysql_num_rows ( $result) > 0) {
       //while($row = mysql_fetch_row ( $result ) {
-      for($tables=array();$row=mysql_fetch_assoc($res);$tables[]=$row);
+      for($tables=array();$row=mysql_fetch_assoc($result);$tables[]=$row);
       print_r($tables);
       // }
       //$newTables= array_diff_assoc( $array1 , $array2 );                                           
