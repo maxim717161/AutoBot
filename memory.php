@@ -30,8 +30,10 @@ class ABMemory {
   }
   
   protected function my_query($sql) {
+    echo "<br>".$sql;
     $result = mysql_query ( $sql );
     if (! $result ) throw new Exception( $QUERY_FAILED .mysql_error ());
+    echo "ok";
     return $result;
   }
   
