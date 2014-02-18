@@ -17,7 +17,7 @@ class ABMemory {
   protected $CONNECT_FAILED = "Unable to connect to DB: ";
   protected $DB_FAILED = "Unable to select DB: ";
   protected $QUERY_FAILED = "Could not successfully run query from DB: ";
-  private $Tables = array();
+  protected $Tables = array();
   
   public function __construct ( $db_host , $db_name , $db_user, $db_pass) {
     $this ->db_host = $db_host;
@@ -26,7 +26,7 @@ class ABMemory {
     $this ->db_pass = $db_pass;
     $Tables [ "ticks" ] = array ( "time" => "DATETIME" , "bname" => "TEXT" , "vAsk" => "DOUBLE" , "vBid" =>"DOUBLE" , "pOpen" => "DOUBLE" , "pHigh" =>"DOUBLE", "pLow" =>"DOUBLE", "pClose" =>"DOUBLE", "PRIMARY KEY" =>"(bname,time)");
     $Tables [ "users" ] = array ( "email" =>"TEXT" , "pass" => "TEXT" , "uStatus" => "TEXT" , "lastEnter" => "DATETIME" , "PRIMARY KEY" => "(email)");
-    $Tables["market"] = array("bname" => "TEXT", "urlTicker" => "TEXT", "PRIMARY KEY" => "(bname)");
+    $Tables ["market"] = array("bname" => "TEXT", "urlTicker" => "TEXT", "PRIMARY KEY" => "(bname)");
   }
   
   protected function my_query($sql) {
@@ -38,19 +38,24 @@ class ABMemory {
   public function connectMySQL() {
     if(!mysql_connect($this->db_host, $this->db_user, $this->db_pass)) throw new Exception($CONNECT_FAILED.mysql_error());
     if (!mysql_select_db($this->db_name)) throw new Exception($DB_FAILED.mysql_error());
-    $sql = "SHOW TABLES";
-    $result = mysql_query($sql);
-    if(!$result) throw new Exception($QUERY_FAILED.mysql_error());
+    $result = $this->my_query("SHOW TABLES");
     $newTables = array();
     if ( mysql_num_rows ( $result) > 0) {
-for($tbl=array();$row=mysql_fetch_row($result);$tbl[$row[0]]=array());
-$newTables=array_diff_assoc( $this->Tables , $tbl );
-$see_Tables=array_intersect_assoc($this->Tables, $tbl);
-print_r($see_Tables);                                       
+      for($tbl=array();$row=mysql_fetch_row($result);$tbl[$row[0]]=array());
+      $newTables=array_diff_assoc( $this->Tables , $tbl );
+      $editTables=array_intersect_assoc($this->Tables, $tbl);
+      mysql_free_result($result);
+      foreach($editTables as $key1 => $val1) {
+        $result =$this->my_query("SHOW FIELDS FROM ".$key1);
+        for( $tbl =array (); $row =mysql_fetch_row ($result );$tbl []=$row);
+        mysql_free_result($result);
+        print_r($tbl);
+      }
     } else {
       $newTables = $this->Tables;
+      mysql_free_result($result);
     }
-    mysql_free_result ( $result );
+    
     // добавляем таблицы
     foreach($newTables as $key1 => $val1) {
       $sql = "CREATE TABLE ".$key1." (";
@@ -61,8 +66,7 @@ print_r($see_Tables);
         $addZ = true;
       }
       $sql.=")";
-      $result = mysql_query($sql);
-    if(!$result) throw new Exception($QUERY_FAILED.mysql_error());
+      mysql_free_result($this->my_query($sql));
     }
   }
   
