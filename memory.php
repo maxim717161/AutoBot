@@ -17,7 +17,9 @@ class ABMemory {
   protected $CONNECT_FAILED = "Unable to connect to DB: ";
   protected $DB_FAILED = "Unable to select DB: ";
   protected $QUERY_FAILED = "Could not successfully run query from DB: ";
-  protected $Tables = array("ticks" => array("time" => "DATETIME", "vAsk" => "DOUBLE", "vBid"=>"DOUBLE", "pOpen" => "DOUBLE","pHigh" => "DOUBLE", "pLow" => "DOUBLE", "pClose" => "DOUBLE"), "users"=> array("email"=>"CHAR(255)", "pass"=>"CHAR(255)", "isVer"=>"BIT","lastEnter"=>"DATETIME"));
+  protected $Tables = array();
+  $Tables["ticks"] = array("time" => "DATETIME", "bname" => "TEXT", "vAsk" => "DOUBLE", "vBid"=>"DOUBLE", "pOpen" => "DOUBLE", "pHigh" => "DOUBLE", "pLow" => "DOUBLE", "pClose" => "DOUBLE", "PRIMARY KEY" => "(time,bname)");
+  $Tables["users"] = array("email"=>"TEXT", "pass"=>"TEXT", "isVer"=>"BIT", "lastEnter"=>"DATETIME", "PRIMARY KEY" => "(email)"));
   
   public function __construct ( $db_host , $db_name , $db_user, $db_pass) {
     $this ->db_host = $db_host;
