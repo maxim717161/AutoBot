@@ -17,15 +17,22 @@ class ABMemory {
   protected $CONNECT_FAILED = "Unable to connect to DB: ";
   protected $DB_FAILED = "Unable to select DB: ";
   protected $QUERY_FAILED = "Could not successfully run query from DB: ";
-  protected $Tables = array();
-  $Tables["ticks"] = array("time" => "DATETIME", "bname" => "TEXT", "vAsk" => "DOUBLE", "vBid"=>"DOUBLE", "pOpen" => "DOUBLE", "pHigh" => "DOUBLE", "pLow" => "DOUBLE", "pClose" => "DOUBLE", "PRIMARY KEY" => "(time,bname)");
-  $Tables["users"] = array("email"=>"TEXT", "pass"=>"TEXT", "isVer"=>"BIT", "lastEnter"=>"DATETIME", "PRIMARY KEY" => "(email)"));
+  private $Tables = array();
   
   public function __construct ( $db_host , $db_name , $db_user, $db_pass) {
     $this ->db_host = $db_host;
     $this ->db_name = $db_name;
     $this ->db_user = $db_user;
     $this ->db_pass = $db_pass;
+    $Tables [ "ticks" ] = array ( "time" => "DATETIME" , "bname" => "TEXT" , "vAsk" => "DOUBLE" , "vBid" =>"DOUBLE" , "pOpen" => "DOUBLE" , "pHigh" =>"DOUBLE", "pLow" =>"DOUBLE", "pClose" =>"DOUBLE", "PRIMARY KEY" =>"(bname,time)");
+    $Tables [ "users" ] = array ( "email" =>"TEXT" , "pass" => "TEXT" , "uStatus" => "TEXT" , "lastEnter" => "DATETIME" , "PRIMARY KEY" => "(email)");
+    $Tables["market"] = array("bname" => "TEXT", "urlTicker" => "TEXT", "PRIMARY KEY" => "(bname)");
+  }
+  
+  protected function my_query($sql) {
+    $result = mysql_query ( $sql );
+    if (! $result ) throw new Exception( $QUERY_FAILED .mysql_error ());
+    return $result;
   }
   
   public function connectMySQL() {
