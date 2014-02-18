@@ -45,7 +45,9 @@ class ABMemory {
     if ( mysql_num_rows ( $result) > 0) {
       for($tbl=array();$row=mysql_fetch_row($result);$tbl[$row[0]]=array());
       $newTables=array_diff_assoc( $this->Tables , $tbl );
+      print_r($newTables);
       $editTables=array_intersect_assoc($this->Tables, $tbl);
+      print_r($editTables);
       mysql_free_result($result);
       foreach($editTables as $key1 => $val1) {
         $result =$this->my_query("SHOW FIELDS FROM ".$key1);
