@@ -24,9 +24,9 @@ class ABMemory {
     $this ->db_name = $db_name;
     $this ->db_user = $db_user;
     $this ->db_pass = $db_pass;
-    $this->Tables [ "ticks" ] = array ( "time" => "DATETIME" , "bname" => "TEXT" , "vAsk" => "DOUBLE" , "vBid" =>"DOUBLE" , "pOpen" => "DOUBLE" , "pHigh" =>"DOUBLE", "pLow" =>"DOUBLE", "pClose" =>"DOUBLE", "PRIMARY KEY" =>"(bname,time)");
-    $this->Tables [ "users" ] = array ( "email" =>"TEXT" , "pass" => "TEXT" , "uStatus" => "TEXT" , "lastEnter" => "DATETIME" , "PRIMARY KEY" => "(email)");
-    $this->Tables ["market"] = array("bname" => "TEXT", "urlTicker" => "TEXT", "PRIMARY KEY" => "(bname)");
+    $this->Tables [ "ticks" ] = array ( "time" => "datetime" , "idMarket" => "int(11)" , "vAsk" => "DOUBLE" , "vBid" =>"DOUBLE" , "pOpen" => "DOUBLE" , "pHigh" =>"DOUBLE", "pLow" =>"DOUBLE", "pClose" =>"DOUBLE", "PRIMARY KEY" =>"(idMarket, time)");
+    $this->Tables [ "users" ] = array ( "email" =>"char(255)" , "pass" => "char(255)" , "uStatus" => "char(12)" , "lastEnter" => "DATETIME" , "PRIMARY KEY" => "(email)");
+    $this->Tables ["market"] = array("idMarket"=>"int(11)", "nameBurse" => "TEXT", "urlTicker" => "TEXT", "PRIMARY KEY" => "(idMarket)");
   }
   
   protected function my_query($sql) {
@@ -45,9 +45,7 @@ class ABMemory {
     if ( mysql_num_rows ( $result) > 0) {
       for($tbl=array();$row=mysql_fetch_row($result);$tbl[$row[0]]=array());
       $newTables=array_diff_assoc( $this->Tables , $tbl );
-      print_r($newTables);
       $editTables=array_intersect_assoc($this->Tables, $tbl);
-      print_r($editTables);
       mysql_free_result($result);
       foreach($editTables as $key1 => $val1) {
         $result =$this->my_query("SHOW FIELDS FROM ".$key1);
