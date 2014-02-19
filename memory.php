@@ -54,7 +54,22 @@ class ABMemory {
         }
         if(count($pk) >0) $tbl["PRIMARY KEY"] = "(".implode(",",$pk).")";
         mysql_free_result($result);
-        print_r($tbl);
+        $diffCols = array_diff_assoc($val1, $tbl);
+        $keys = array_keys($val1);
+        foreach($diffCols as $key2=>$val2) {
+          if(array_key_exists($key2,$tbl)) $this->my_query("ALTER TABLE ".$key1." CHANGE ".$key2." ".$key2." ".$val2);
+          else {
+            $after = "";
+            $index = array_search($key2, $keys);
+            if($index < count($val1)) {
+              if($index==0) $after = " FIRST .$keys[$index +1];
+              else {
+                $after = " AFTER ".$keys[$index -1];
+              }
+            }
+            $this->my_query("ALTER TABLE ".$key1." ADD ".$key2." ".$val2.$after);
+          }
+        }
       }
     } else {
       $newTables = $this->Tables;
