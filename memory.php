@@ -49,7 +49,7 @@ class ABMemory {
       mysql_free_result($result);
       foreach($editTables as $key1 => $val1) {
         $result =$this->my_query("SHOW FIELDS FROM ".$key1);
-        for( $tbl =array (); $row =mysql_fetch_row ($result );$tbl []=$row);
+        for( $tbl =array (), $pk = array(); $row =mysql_fetch_row ($result );$tbl [$row[0]]=$row[1],if($row[3]=="PRI") $pk[]=$row[0]);
         mysql_free_result($result);
         print_r($tbl);
       }
@@ -68,7 +68,7 @@ class ABMemory {
         $addZ = true;
       }
       $sql.=")";
-      mysql_free_result($this->my_query($sql));
+      $this->my_query($sql);
     }
   }
   
