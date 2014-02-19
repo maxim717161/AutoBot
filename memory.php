@@ -56,19 +56,32 @@ class ABMemory {
         mysql_free_result($result);
         $diffCols = array_diff_assoc($val1, $tbl);
         $keys = array_keys($val1);
+        $oldkeys = array_keys($tbl);
+        $delColsNames = array_diff($oldkeys, $keys);
         foreach($diffCols as $key2=>$val2) {
-          if(array_key_exists($key2,$tbl)) $this->my_query("ALTER TABLE ".$key1." CHANGE ".$key2." ".$key2." ".$val2);
+          if(array_key_exists($key2,$tbl)) {
+            if($key2 == "PRIMARY KEY") {
+              $this->my_query("ALTER TABLE ".$key1." DROP PRIMARY KEY");
+              $this->my_query("ALTER TABLE ".$key1." ADD PRIMARY KEY ".$val2);
+            } else {
+              $this->my_query("ALTER TABLE ".$key1." CHANGE ".$key2." ".$key2." ".$val2);
+            }
+          }
           else {
             $after = "";
             $index = array_search($key2, $keys);
             if($index < count($val1)) {
-              if($index==0) $after = " FIRST .$keys[$index +1];
+              if($index==0) $after = " FIRST ".$keys[1];
               else {
                 $after = " AFTER ".$keys[$index -1];
               }
             }
             $this->my_query("ALTER TABLE ".$key1." ADD ".$key2." ".$val2.$after);
           }
+        }
+        // del cols
+        foreach($delColsNames as $val3) {
+          $this->my_query("ALTER TABLE ".$key1." DROP ".$val3);
         }
       }
     } else {
