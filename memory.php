@@ -71,7 +71,7 @@ class ABMemory {
             $after = "";
             $index = array_search($key2, $keys);
             if($index < count($val1)) {
-              if($index==0) $after = " FIRST ".$keys[1];
+              if($index==0) $after = " FIRST ".$oldkeys[1];
               else {
                 $after = " AFTER ".$keys[$index -1];
               }
