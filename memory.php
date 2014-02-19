@@ -24,16 +24,16 @@ class ABMemory {
     $this ->db_name = $db_name;
     $this ->db_user = $db_user;
     $this ->db_pass = $db_pass;
-    $Tables [ "ticks" ] = array ( "time" => "DATETIME" , "bname" => "TEXT" , "vAsk" => "DOUBLE" , "vBid" =>"DOUBLE" , "pOpen" => "DOUBLE" , "pHigh" =>"DOUBLE", "pLow" =>"DOUBLE", "pClose" =>"DOUBLE", "PRIMARY KEY" =>"(bname,time)");
-    $Tables [ "users" ] = array ( "email" =>"TEXT" , "pass" => "TEXT" , "uStatus" => "TEXT" , "lastEnter" => "DATETIME" , "PRIMARY KEY" => "(email)");
-    $Tables ["market"] = array("bname" => "TEXT", "urlTicker" => "TEXT", "PRIMARY KEY" => "(bname)");
+    $this->Tables [ "ticks" ] = array ( "time" => "DATETIME" , "bname" => "TEXT" , "vAsk" => "DOUBLE" , "vBid" =>"DOUBLE" , "pOpen" => "DOUBLE" , "pHigh" =>"DOUBLE", "pLow" =>"DOUBLE", "pClose" =>"DOUBLE", "PRIMARY KEY" =>"(bname,time)");
+    $this->Tables [ "users" ] = array ( "email" =>"TEXT" , "pass" => "TEXT" , "uStatus" => "TEXT" , "lastEnter" => "DATETIME" , "PRIMARY KEY" => "(email)");
+    $this->Tables ["market"] = array("bname" => "TEXT", "urlTicker" => "TEXT", "PRIMARY KEY" => "(bname)");
   }
   
   protected function my_query($sql) {
     echo "<br>".$sql;
     $result = mysql_query ( $sql );
     if (! $result ) throw new Exception( $QUERY_FAILED .mysql_error ());
-    echo "ok";
+    echo ". ok!";
     return $result;
   }
   
