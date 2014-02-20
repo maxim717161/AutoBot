@@ -8,7 +8,7 @@ border: 0 ; /* Убираем двойные границы */
 width : 100% ; /* Ширина таблицы */
 height: 100% ;
 border-spacing: 0 ; /* Расстояние между ячеек */
-background : #F5FFFA ; /* Цвет фона */
+background : #FDF5E6; /* Цвет фона */
 }
 .top {
 align: top;
@@ -24,8 +24,10 @@ text-align: center;
 background : white ; /* Цвет фона */
 }
 .k {
+font-weight:bold;
+align-text: center;
 width: 30%;
-border: 1px solid black;
+border: 3px double white;
 padding: 10px;
 background: black;
 color: white;
@@ -41,7 +43,7 @@ font-style : italic;}
 </head>
 <body>
 <table class="m">
-<tr><td class="top"> <h1><span class="r">Auto</span>Bot <span class="g">&Alpha;&iamp;&Omega;</span></h1> </td></tr>
+<tr><td class="top"> <h1><span class="r">Auto</span>Bot <span class="g">&Alpha;&amp;&Omega;</span></h1> </td></tr>
 <tr><td class="mid">
 <p class="p"><span class="r">25:27</span> посему надлежало тебе отдать серебро мое торгующим, и я, придя,
 получил бы мое с прибылью;</p> 
