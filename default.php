@@ -4,7 +4,7 @@
 <title> AutoBot &Alpha;&amp;&Omega; v0.0.1 </title>
 <style>
 .m {
-border: 0 ; /* Убираем двойные границы */
+border: 1 ; /* Убираем двойные границы */
 width : 100% ; /* Ширина таблицы */
 height: 100% ;
 border-spacing: 0 ; /* Расстояние между ячеек */
@@ -49,8 +49,8 @@ font-style : italic;}
 получил бы мое с прибылью;</p> 
 <p class="f">Евангелие от Матфея</p></td>
 <tr><td class="mid"> <a class="k" href="heart.php"> Вход </a> </td></tr>
-<tr><td class="bot"><p>&copy; 2014 <span class="r">Auto</span>Bot <span class="g" >&Alpha;&amp;&Omega;</span>,
-<span class="s">maxim.bagno</span></p></td></tr>
+<tr><td class="bot">&copy; 2014 <span class="r">Auto</span>Bot <span class="g" >&Alpha;&amp;&Omega;</span>,
+<span class="s">maxim.bagno</span></td></tr>
 </table>
 </body>
 </html>
