@@ -48,9 +48,9 @@ font-style : italic;}
 <p class="p"><span class="r">25:27</span> посему надлежало тебе отдать серебро мое торгующим, и я, придя,
 получил бы мое с прибылью;</p> 
 <p class="f">Евангелие от Матфея</p></td>
-<tr><td class="mid"> <div class="k"> <a href="heart.php">Вход</a> </div> </td></tr>
-<tr><td class="bot">&copy; 2014 <span class="r">Auto</span>Bot <span class="g" >&Alpha;&amp;&Omega;</span>,
-<span class="s">maxim.bagno</span></td></tr>
+<tr><td class="mid"> <a class="k" href="heart.php"> Вход </a> </td></tr>
+<tr><td class="bot"><p>&copy; 2014 <span class="r">Auto</span>Bot <span class="g" >&Alpha;&amp;&Omega;</span>,
+<span class="s">maxim.bagno</span></p></td></tr>
 </table>
 </body>
 </html>
