@@ -4,7 +4,7 @@
 <title> AutoBot &Alpha;&amp;&Omega; v0.0.1 </title>
 <style>
 .m {
-border: 1 ; /* Убираем двойные границы */
+border: 1 solid black ; /* Убираем двойные границы */
 width : 100% ; /* Ширина таблицы */
 height: 100% ;
 border-spacing: 0 ; /* Расстояние между ячеек */
