@@ -40,6 +40,10 @@ class ABMemory {
   public function connectMySQL() {
     if(!mysql_connect($this->db_host, $this->db_user, $this->db_pass)) throw new Exception($CONNECT_FAILED.mysql_error());
     if (!mysql_select_db($this->db_name)) throw new Exception($DB_FAILED.mysql_error());
+    $this->my_db_test();
+  }
+  
+  protected function my_db_test() {
     $result = $this->my_query("SHOW TABLES");
     $newTables = array();
     if ( mysql_num_rows ( $result) > 0) {
@@ -71,7 +75,7 @@ class ABMemory {
             $index = array_search($key2, $keys);
             if($index < count($val1)) {
               if($index==0) {
-                if(count($oldkeys) >0) $after = " FIRST ".$oldkeys[0];
+                $after = " FIRST";
               } else {
                 if(count($keys) > 1)$after = " AFTER ".$keys[$index -1];
               }
