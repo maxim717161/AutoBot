@@ -66,14 +66,14 @@ class ABMemory {
             } else {
               $this->my_query("ALTER TABLE ".$key1." CHANGE ".$key2." ".$key2." ".$val2);
             }
-          }
-          else {
+          } else {
             $after = "";
             $index = array_search($key2, $keys);
             if($index < count($val1)) {
-              if($index==0) $after = " FIRST ".$oldkeys[1];
-              else {
-                $after = " AFTER ".$keys[$index -1];
+              if($index==0) {
+                if(count($oldkeys) >0) $after = " FIRST ".$oldkeys[0];
+              } else {
+                if(count($keys) > 1)$after = " AFTER ".$keys[$index -1];
               }
             }
             $this->my_query("ALTER TABLE ".$key1." ADD ".$key2." ".$val2.$after);
