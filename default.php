@@ -18,7 +18,13 @@ text-align: center;
 }
 .bot {
 text-align: center;
-background : silver ; /* Цвет фона */
+background : white ; /* Цвет фона */
+}
+.k {
+border: 1px solid black;
+padding: 10px;
+background: black;
+color: white;
 }
 .p {text-align: justify;}
 .r {color: red;}
@@ -31,12 +37,12 @@ font-style : italic;}
 </head>
 <body>
 <table class="m">
-<tr><td class="top"> <h1><span class="r">Auto</span>Bot <span class="g">&Alpha;</span>&amp;<span class="g">&Omega;</span></h1> </td></tr>
-<tr><td class="mid"> <p class="f">Евангелие от Матфея</p>
-<p><span class="r">25:26</span> Господин же его сказал ему в ответ: лукавый раб и ленивый! ты знал, что я жну, где не сеял, и собираю, где не рассыпал;</p>
-
-<p><span class="r">25:27</span> посему надлежало тебе отдать серебро мое торгующим, и я, придя, получил бы мое с прибылью;</p> </td>
-<tr><td class="mid"> 1999 </td></tr>
+<tr><td class="top"> <h1><span class="r">Auto</span>Bot <span class="g">&Alpha;&iamp;&Omega;</span></h1> </td></tr>
+<tr><td class="mid">
+<p class="p"><span class="r">25:27</span> посему надлежало тебе отдать серебро мое торгующим, и я, придя,
+получил бы мое с прибылью;</p> 
+< p class = "f" > Евангелие от Матфея</ p ></td>
+<tr><td class="mid"> <p class="k"> Вход </p> </td></tr>
 <tr><td class="bot"> <p>&copy; 2014 <span class="r">Auto</span>Bot <span class="g" >&Alpha;&amp;&Omega;</span>,
 <span class="s">maxim.bagno</span> </p></td></tr>
 </table>
