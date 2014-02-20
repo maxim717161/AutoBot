@@ -8,24 +8,24 @@ border: 0 ; /* Убираем двойные границы */
 width : 100% ; /* Ширина таблицы */
 height: 100% ;
 border-spacing: 0 ; /* Расстояние между ячеек */
-background : #FDF5E6; /* Цвет фона */
+background : white; /* Цвет фона */
 }
 .top {
 align: top;
 text-align: center;
 }
 .mid {
-align: center;
+vertical-align: center;
 text-align: center;
 }
 .bot {
-align: bottom;
+vertical-align: bottom;
 text-align: center;
 background : white ; /* Цвет фона */
 }
 .k {
 font-weight:bold;
-align-text: center;
+text-align: center;
 width: 30%;
 border: 3px double white;
 padding: 10px;
@@ -35,7 +35,7 @@ color: white;
 .p {text-align: justify;}
 .r {color: red;}
 .g {color: green;}
-.s {color: grey;}
+.s {color: silver;}
 .f {
 text-align: right;
 font-style : italic;}
@@ -49,8 +49,8 @@ font-style : italic;}
 получил бы мое с прибылью;</p> 
 <p class="f">Евангелие от Матфея</p></td>
 <tr><td class="mid"> <p class="k"> Вход </p> </td></tr>
-<tr><td class="bot"> <p>&copy; 2014 <span class="r">Auto</span>Bot <span class="g" >&Alpha;&amp;&Omega;</span>,
-<span class="s">maxim.bagno</span> </p></td></tr>
+<tr><td class="bot">&copy; 2014 <span class="r">Auto</span>Bot <span class="g" >&Alpha;&amp;&Omega;</span>,
+<span class="s">maxim.bagno</span></td></tr>
 </table>
 </body>
 </html>
