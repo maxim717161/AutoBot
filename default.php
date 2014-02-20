@@ -11,16 +11,20 @@ border-spacing: 0 ; /* Расстояние между ячеек */
 background : #F5FFFA ; /* Цвет фона */
 }
 .top {
+align: top;
 text-align: center;
 }
 .mid {
+align: center;
 text-align: center;
 }
 .bot {
+align: bottom;
 text-align: center;
 background : white ; /* Цвет фона */
 }
 .k {
+width: 30%;
 border: 1px solid black;
 padding: 10px;
 background: black;
@@ -41,7 +45,7 @@ font-style : italic;}
 <tr><td class="mid">
 <p class="p"><span class="r">25:27</span> посему надлежало тебе отдать серебро мое торгующим, и я, придя,
 получил бы мое с прибылью;</p> 
-< p class = "f" > Евангелие от Матфея</ p ></td>
+<p class="f">Евангелие от Матфея</p></td>
 <tr><td class="mid"> <p class="k"> Вход </p> </td></tr>
 <tr><td class="bot"> <p>&copy; 2014 <span class="r">Auto</span>Bot <span class="g" >&Alpha;&amp;&Omega;</span>,
 <span class="s">maxim.bagno</span> </p></td></tr>
