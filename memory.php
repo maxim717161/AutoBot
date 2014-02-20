@@ -63,13 +63,11 @@ class ABMemory {
         $oldkeys = array_keys($tbl);
         $delColsNames = array_diff($oldkeys, $keys);
         foreach($diffCols as $key2=>$val2) {
-          if(array_key_exists($key2,$tbl)) {
-            if($key2 == "PRIMARY KEY") {
-              $this->my_query("ALTER TABLE ".$key1." DROP PRIMARY KEY");
-              $this->my_query("ALTER TABLE ".$key1." ADD PRIMARY KEY ".$val2);
-            } else {
-              $this->my_query("ALTER TABLE ".$key1." CHANGE ".$key2." ".$key2." ".$val2);
-            }
+          if($key2 == "PRIMARY KEY") {
+            if(array_key_exists($key2,$tbl)) {$this->my_query("ALTER TABLE ".$key1." DROP PRIMARY KEY");}
+            $this->my_query("ALTER TABLE ".$key1." ADD PRIMARY KEY ".$val2);
+          } elseif(array_key_exists($key2,$tbl)) {
+            $this->my_query("ALTER TABLE ".$key1." CHANGE ".$key2." ".$key2." ".$val2);
           } else {
             $after = "";
             $index = array_search($key2, $keys);
