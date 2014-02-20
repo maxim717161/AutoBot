@@ -15,21 +15,18 @@ text-align: center;
 }
 .mid {
 text-align: center;
-border: 1px solid black
 }
 .bot {
 text-align: center;
 background : silver ; /* Цвет фона */
 }
-p {text-align: justify;}
+.p {text-align: justify;}
 .r {color: red;}
 .g {color: green;}
 .s {color: grey;}
 .f {
-color : black ; /* Красный цвет текста */
-font-style : italic ; /* Курсивное начертание */
-font-weight : bold ; /* Жирное начертание */
-}
+text-align: right;
+font-style : italic;}
 </style>
 </head>
 <body>
