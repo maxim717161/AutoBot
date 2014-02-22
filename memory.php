@@ -29,6 +29,18 @@ class ABMemory {
     $this->Tables ["market"] = array("idMarket"=>"int(11)", "nameBurse" => "char(33)", "urlTicker" => "text", "PRIMARY KEY" => "(idMarket)");
   }
   
+  public function newTicks() {
+    $marts = $this->my_table_array("market");
+    foreach($marts as $val) {
+      
+    }
+  }
+  
+  protected function my_table_array($table) {
+    $my_table = array();
+    return $my_table;
+  }
+  
   protected function my_query($sql) {
     echo "<br>".$sql;
     $result = mysql_query ( $sql );
@@ -64,7 +76,6 @@ class ABMemory {
         $delColsNames = array_diff($oldkeys, $keys);
         foreach($diffCols as $key2=>$val2) {
           if($key2 == "PRIMARY KEY") {
-            print_r($tbl);
             if(array_key_exists($key2,$tbl)) {$this->my_query("ALTER TABLE ".$key1." DROP PRIMARY KEY");}
             $this->my_query("ALTER TABLE ".$key1." ADD PRIMARY KEY ".$val2);
           } elseif(array_key_exists($key2,$tbl)) {
@@ -128,10 +139,5 @@ class ABMemory {
   }
 }
 
-protected function addTicks($ticks) {
-$result = mysql_connect($db_host,
-$db_user, $db_pass);
-if (mysql_select_db($db_name) == false) {
-// create table
-}}}
+}
 ?>
