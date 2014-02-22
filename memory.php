@@ -24,9 +24,9 @@ class ABMemory {
     $this ->db_name = $db_name;
     $this ->db_user = $db_user;
     $this ->db_pass = $db_pass;
-    $this->Tables [ "ticks" ] = array ( "time" => "datetime" , "idMarket" => "int(11)" , "vAsk" => "DOUBLE" , "vBid" =>"DOUBLE" , "pOpen" => "DOUBLE" , "pHigh" =>"DOUBLE", "pLow" =>"DOUBLE", "pClose" =>"DOUBLE", "PRIMARY KEY" =>"(idMarket, time)");
-    $this->Tables [ "users" ] = array ( "email" =>"char(255)" , "pass" => "char(255)" , "uStatus" => "char(12)" , "lastEnter" => "DATETIME" , "PRIMARY KEY" => "(email)");
-    $this->Tables ["market"] = array("idMarket"=>"int(11)", "nameBurse" => "TEXT", "urlTicker" => "TEXT", "PRIMARY KEY" => "(idMarket)");
+    $this->Tables [ "ticks" ] = array ( "time" => "datetime" , "idMarket" => "int(11)" , "vAsk" => "double" , "vBid" =>"double" , "pOpen" => "double" , "pHigh" =>"double", "pLow" =>"double", "pClose" =>"double", "PRIMARY KEY" =>"(idMarket,time)");
+    $this->Tables [ "users" ] = array ( "email" =>"char(255)" , "pass" => "char(255)" , "uStatus" => "char(12)" , "lastEnter" => "datetime" , "PRIMARY KEY" => "(email)");
+    $this->Tables ["market"] = array("idMarket"=>"int(11)", "nameBurse" => "char(33)", "urlTicker" => "text", "PRIMARY KEY" => "(idMarket)");
   }
   
   protected function my_query($sql) {
@@ -58,7 +58,6 @@ class ABMemory {
         }
         if(count($pk) >0) $tbl["PRIMARY KEY"] = "(".implode(",",$pk).")";
         mysql_free_result($result);
-        print_r($tbl);
         $diffCols = array_diff_assoc($val1, $tbl);
         $keys = array_keys($val1);
         $oldkeys = array_keys($tbl);
@@ -106,7 +105,7 @@ class ABMemory {
     }
   }
   
-  public function addTrades($trades) {
+  public function addTrades() {
     $ticks = array();
     foreach($trades as $value) {
     $dir = TICKS_BUY;
@@ -126,7 +125,6 @@ class ABMemory {
       $ticks [$value [TRADES_DATETIME]][$dir] = $value[TRADES_AMOUNT];
     }
   }
-addTicks($ticks);
 }
 
 protected function addTicks($ticks) {
