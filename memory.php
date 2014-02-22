@@ -58,6 +58,7 @@ class ABMemory {
         }
         if(count($pk) >0) $tbl["PRIMARY KEY"] = "(".implode(",",$pk).")";
         mysql_free_result($result);
+        print_r($tbl);
         $diffCols = array_diff_assoc($val1, $tbl);
         $keys = array_keys($val1);
         $oldkeys = array_keys($tbl);
