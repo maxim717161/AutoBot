@@ -24,7 +24,7 @@ class ABMemory {
     $this ->db_name = $db_name;
     $this ->db_user = $db_user;
     $this ->db_pass = $db_pass;
-    $this->Tables [ "ticks" ] = array ( "time" => "datetime" , "idMarket" => "int(11)" , "vAsk" => "double" , "vBid" =>"double" , "pOpen" => "double" , "pHigh" =>"double", "pLow" =>"double", "pClose" =>"double", "PRIMARY KEY" =>"(idMarket,time)");
+    $this->Tables [ "ticks" ] = array ( "time" => "datetime" , "idMarket" => "int(11)" , "vAsk" => "double" , "vBid" =>"double" , "pOpen" => "double" , "pHigh" =>"double", "pLow" =>"double", "pClose" =>"double", "PRIMARY KEY" => "(time,idMarket)");
     $this->Tables [ "users" ] = array ( "email" =>"char(255)" , "pass" => "char(255)" , "uStatus" => "char(12)" , "lastEnter" => "datetime" , "PRIMARY KEY" => "(email)");
     $this->Tables ["market"] = array("idMarket"=>"int(11)", "nameBurse" => "char(33)", "urlTicker" => "text", "PRIMARY KEY" => "(idMarket)");
   }
@@ -64,6 +64,7 @@ class ABMemory {
         $delColsNames = array_diff($oldkeys, $keys);
         foreach($diffCols as $key2=>$val2) {
           if($key2 == "PRIMARY KEY") {
+            print_r($tbl);
             if(array_key_exists($key2,$tbl)) {$this->my_query("ALTER TABLE ".$key1." DROP PRIMARY KEY");}
             $this->my_query("ALTER TABLE ".$key1." ADD PRIMARY KEY ".$val2);
           } elseif(array_key_exists($key2,$tbl)) {
