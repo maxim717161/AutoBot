@@ -1,5 +1,5 @@
 <?php
-require_once ( 'btce-api.php' );
+require_once ( 'api-btce.php' );
 require_once ( '___auto-bot-sec.php' );
 class ABMemory {
   const TRADES_DATETIME = 'date';
