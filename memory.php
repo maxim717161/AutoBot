@@ -36,8 +36,10 @@ class ABMemory {
     }
   }
   
-  protected function my_table_array($table) {
-    $my_table = array();
+  protected function my_table_array($table, $columns = "*") {
+    $result = $this -> my_query ( "SELECT " . $columns . " FROM " . $table);
+    for( $my_table = array (); $row = mysql_fetch_row ( $result ); $my_table[] =$row){}
+    mysql_free_result ( $result );
     return $my_table;
   }
   
