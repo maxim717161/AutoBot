@@ -1,4 +1,6 @@
 <?php
+require_once ( 'btce-api.php' );
+require_once ( '___auto-bot-sec.php' );
 class ABMemory {
   const TRADES_DATETIME = 'date';
   const TRADES_AMOUNT = 'amount';
@@ -26,10 +28,16 @@ class ABMemory {
     $this ->db_pass = $db_pass;
     $this->Tables [ "ticks" ] = array ( "time" => "datetime" , "idMarket" => "int(11)" , "vAsk" => "double" , "vBid" =>"double" , "pOpen" => "double" , "pHigh" =>"double", "pLow" =>"double", "pClose" =>"double", "PRIMARY KEY" => "(time,idMarket)");
     $this->Tables [ "users" ] = array ( "email" =>"char(255)" , "pass" => "char(255)" , "uStatus" => "char(12)" , "lastEnter" => "datetime" , "PRIMARY KEY" => "(email)");
-    $this->Tables ["market"] = array("idMarket"=>"int(11)", "nameBurse" => "char(33)", "urlTicker" => "text", "PRIMARY KEY" => "(idMarket)");
+    $this->Tables ["market"] = array("idMarket"=>"int(11)", "nameBurse" => "char(33)", "typeAPI" => "char(33)", "urlTicker" => "text", "urlTrades" => "text", "urlFee" => "text", "urlDepth" => "text", "urlInfo" => "tex", "PRIMARY KEY" => "(idMarket)");
   }
   
   public function newTicks() {
+    $BTCeAPI = new BTCeAPI(
+/*API KEY:    */ $AutoBotSEC [ 'BTCe' ][ 'KEY' ] ,
+/*API SECRET: */ $AutoBotSEC [ 'BTCe' ][ 'SECRET' ]
+);
+$btc_usd = $BTCeAPI -> getPairTrades ( 'btc_usd' );
+print_r($btc_usd);
     $marts = $this->my_table_array("market");
     foreach($marts as $val) {
       
