@@ -1,15 +1,5 @@
 <?php
 class ABMemory {
-  const TRADES_DATETIME = 'date';
-  const TRADES_AMOUNT = 'amount';
-  const TRADES_PRICE = 'price';
-  const TRADES_TRADE_TYPE = 'trade_type';
-  const TRADES_BID = 'bid';
-  const TRADES_ASK = 'ask';
-  const TICKS_BUY = 'buy' ;
-  const TICKS_SELL = 'sell';
-  const TICKS_HIGH_PRICE ='high_price';
-  const TICKS_LOW_PRICE= 'low_price';
   protected $db_host;
   protected $db_name;
   protected $db_user;
@@ -32,8 +22,6 @@ class ABMemory {
   public function newTicks() {
     $btc_usd = $this -> retrieveJSON( 'https://btc-e.com/api/2/btc_usd/trades' );
     $ticks = array();
-    echo "<br>";
-    print_r($btc_usd);
     foreach($btc_usd as $val) {
       $ticks[$val['date']][$val['trade_type']] += $val['amount'];
       if(!isset($ticks[$val['date']]['pClose'])) {
@@ -47,7 +35,9 @@ class ABMemory {
         if($ticks[$val['date']]['pLow'] > $val['price']) $ticks[$val['date']]['pLow'] = $val['price'];
       }
     }
-    print_r($ticks);
+    foreach($ticks as $key => $val) {
+      $this -> my_query("INSERT INTO ticks VALUES(".$key.",1,".$val['ask'].",".$val['bid'].",".$val['pOpen'].",".$val['pHigh'].",".$val['pLow'].",".$val['pClose'].")");
+    }
     $marts = $this->my_table_array("market");
     foreach($marts as $val) {
       
