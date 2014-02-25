@@ -32,12 +32,8 @@ class ABMemory {
   }
   
   public function newTicks() {
-    $BTCeAPI = new BTCeAPI(
-/*API KEY:    */ $AutoBotSEC [ 'BTCe' ][ 'KEY' ] ,
-/*API SECRET: */ $AutoBotSEC [ 'BTCe' ][ 'SECRET' ]
-);
-$btc_usd = $BTCeAPI -> getPairTrades ( 'btc_usd' );
-print_r($btc_usd);
+    $btc_usd = $this -> retriveJSON ( 'https://btc-e.com/api/2/btc_usd/trades' );
+    print_r($btc_usd);
     $marts = $this->my_table_array("market");
     foreach($marts as $val) {
       
@@ -57,6 +53,14 @@ print_r($btc_usd);
     if (! $result ) throw new Exception( $QUERY_FAILED .mysql_error ());
     echo ". ok!";
     return $result;
+  }
+  
+  protected function retrieveJSON($URL) {
+    $opts = array('http' => array( 'method'  => 'GET', 'timeout' => 10 ));
+    $context  = stream_context_create($opts);
+    $feed = file_get_contents($URL, false, $context);
+    $json = json_decode($feed, true);
+    return $json;
   }
   
   public function connectMySQL() {
