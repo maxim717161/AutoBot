@@ -23,8 +23,9 @@ class ABMemory {
     $btc_usd = $this -> retrieveJSON( 'https://btc-e.com/api/2/btc_usd/trades' );
     $ticks = array();
     foreach($btc_usd as $val) {
-      $ticks[$val['date']][$val['trade_type']] += $val['amount'];
       if(!isset($ticks[$val['date']]['pClose'])) {
+        $ticks[$val['date']]['bid'] = 0;
+        $ticks[$val['date']]['ask'] = 0;
         $ticks[$val['date']]['pClose'] = $val['price'];
         $ticks[$val['date']]['pOpen'] = $val['price'];
         $ticks[$val['date']]['pHigh'] = $val['price'];
@@ -34,6 +35,7 @@ class ABMemory {
         if($ticks[$val['date']]['pHigh'] < $val['price']) $ticks[$val['date']]['pHigh'] = $val['price'];
         if($ticks[$val['date']]['pLow'] > $val['price']) $ticks[$val['date']]['pLow'] = $val['price'];
       }
+      $ticks[$val['date']][$val['trade_type']] += $val['amount'];
     }
     foreach($ticks as $key => $val) {
       $this -> my_query("INSERT INTO ticks VALUES(".$key.",1,".$val['ask'].",".$val['bid'].",".$val['pOpen'].",".$val['pHigh'].",".$val['pLow'].",".$val['pClose'].")");
