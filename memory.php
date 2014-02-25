@@ -32,6 +32,8 @@ class ABMemory {
   public function newTicks() {
     $btc_usd = $this -> retrieveJSON( 'https://btc-e.com/api/2/btc_usd/trades' );
     $ticks = array();
+    echo "<br>";
+    print_r($btc_usd);
     foreach($btc_usd as $val) {
       $ticks[$val['date']][$val['trade_type']] += $val['amount'];
       if(!isset($ticks[$val['date']]['pClose'])) {
