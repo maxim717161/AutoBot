@@ -34,7 +34,7 @@ class ABMemory {
     $ticks = array();
     foreach($btc_usd as $val) {
       $ticks[$val['date']][$val['trade_type']] += $val['amount'];
-      if(!isset($ticks[$val['date']]['pClose']) {
+      if(!isset($ticks[$val['date']]['pClose'])) {
         $ticks[$val['date']]['pClose'] = $val['price'];
         $ticks[$val['date']]['pOpen'] = $val['price'];
         $ticks[$val['date']]['pHigh'] = $val['price'];
