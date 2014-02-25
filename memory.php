@@ -1,6 +1,4 @@
 <?php
-require_once ( 'api-btce.php' );
-require_once ( '___auto-bot-sec.php' );
 class ABMemory {
   const TRADES_DATETIME = 'date';
   const TRADES_AMOUNT = 'amount';
@@ -34,6 +32,21 @@ class ABMemory {
   public function newTicks() {
     $btc_usd = $this -> retrieveJSON( 'https://btc-e.com/api/2/btc_usd/trades' );
     print_r($btc_usd);
+    $ticks = array();
+    $c = 0;
+    foreach($btc_usd as $val) {
+      $ticks[$val['date']][$val['trade_type']] += $val['amount'];
+      if(!isset($ticks[$val['date']]['pClose']) {
+        $ticks[$val['date']]['pClose'] = $val['price'];
+        $ticks[$val['date']]['pOpen'] = $val['price'];
+        $ticks
+      }
+      if(!isset($ticks[$c]['time']) & ($val['date'] == $ticks[$c]['time']])) {
+        $ticks[]
+      } else {
+        $
+      }
+    }
     $marts = $this->my_table_array("market");
     foreach($marts as $val) {
       
