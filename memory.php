@@ -38,7 +38,7 @@ class ABMemory {
       $ticks[$val['date']][$val['trade_type']] += $val['amount'];
     }
     foreach($ticks as $key => $val) {
-      $this -> my_query("INSERT INTO ticks VALUES(".$key.",1,".$val['ask'].",".$val['bid'].",".$val['pOpen'].",".$val['pHigh'].",".$val['pLow'].",".$val['pClose'].")");
+      $this -> my_query("INSERT INTO ticks VALUES(".date(DATE_ATOM,$key).",1,".$val['ask'].",".$val['bid'].",".$val['pOpen'].",".$val['pHigh'].",".$val['pLow'].",".$val['pClose'].")");
     }
     $marts = $this->my_table_array("market");
     foreach($marts as $val) {
@@ -136,28 +136,6 @@ class ABMemory {
       $this->my_query($sql);
     }
   }
-  
-  public function addTrades() {
-    $ticks = array();
-    foreach($trades as $value) {
-    $dir = TICKS_BUY;
-    if ($value[TRADES_TRADE_TYPE] == TRADES_BID) {
-      $dir = TICKS_SELL;
-    }
-    if ( isset( $ticks [$value [TRADES_DATETIME]]) === false ) {
-      $ticks [$value [TRADES_DATETIME]][TICKS_HIGH_PRICE] =$value [TRADES_PRICE];
-      $ticks [ $value [TRADES_DATETIME]][TICKS_LOW_PRICE] = $value [TRADES_PRICE];
-    } else {
-      if($ticks [ $value [TRADES_DATETIME]][TICKS_HIGH_PRICE] < $value [TRADES_PRICE]) $ticks [ $value [TRADES_DATETIME]][TICKS_HIGH_PRICE] = $value [TRADES_PRICE];
-      if($ticks [ $value [TRADES_DATETIME]][TICKS_LOW_PRICE] > $value [TRADES_PRICE]) $ticks [ $value [TRADES_DATETIME]][TICKS_LOW_PRICE] = $value [TRADES_PRICE];
-    }
-    if(isset($ticks[$value[TRADES_DATETIME]][$dir]) === true){
-      $ticks [$value [TRADES_DATETIME]][$dir] += $value[TRADES_AMOUNT];
-    } else {
-      $ticks [$value [TRADES_DATETIME]][$dir] = $value[TRADES_AMOUNT];
-    }
-  }
-}
 
 }
 ?>
