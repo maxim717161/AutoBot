@@ -32,7 +32,7 @@ class ABMemory {
   }
   
   public function newTicks() {
-    $btc_usd = $this -> retriveJSON ( 'https://btc-e.com/api/2/btc_usd/trades' );
+    $btc_usd = $this -> retrieveJSON( 'https://btc-e.com/api/2/btc_usd/trades' );
     print_r($btc_usd);
     $marts = $this->my_table_array("market");
     foreach($marts as $val) {
