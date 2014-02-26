@@ -14,7 +14,7 @@ class ABMemory {
     $this ->db_name = $db_name;
     $this ->db_user = $db_user;
     $this ->db_pass = $db_pass;
-    $this->Tables [ "ticks" ] = array ( "time" => "datetime" , "idMarket" => "int(11)" , "vAsk" => "double" , "vBid" =>"double" , "pOpen" => "double" , "pHigh" =>"double", "pLow" =>"double", "pClose" =>"double", "PRIMARY KEY" => "(time,idMarket)");
+    $this->Tables [ "ticks" ] = array ( "time" => "timestamp" , "idMarket" => "int(11)" , "vAsk" => "double" , "vBid" =>"double" , "pOpen" => "double" , "pHigh" =>"double", "pLow" =>"double", "pClose" =>"double", "PRIMARY KEY" => "(time,idMarket)");
     $this->Tables [ "users" ] = array ( "email" =>"char(255)" , "pass" => "char(255)" , "uStatus" => "char(12)" , "lastEnter" => "datetime" , "PRIMARY KEY" => "(email)");
     $this->Tables ["market"] = array("idMarket"=>"int(11)", "nameBurse" => "char(33)", "typeAPI" => "char(33)", "urlTicker" => "text", "urlTrades" => "text", "urlFee" => "text", "urlDepth" => "text", "urlInfo" => "text", "PRIMARY KEY" => "(idMarket)");
   }
@@ -38,7 +38,7 @@ class ABMemory {
       $ticks[$val['date']][$val['trade_type']] += $val['amount'];
     }
     foreach($ticks as $key => $val) {
-      $this -> my_query("INSERT INTO ticks VALUES(".date(DATE_ATOM,$key).",1,".$val['ask'].",".$val['bid'].",".$val['pOpen'].",".$val['pHigh'].",".$val['pLow'].",".$val['pClose'].")");
+      $this -> my_query("INSERT INTO ticks VALUES(".$key.",1,".$val['ask'].",".$val['bid'].",".$val['pOpen'].",".$val['pHigh'].",".$val['pLow'].",".$val['pClose'].")");
     }
     $marts = $this->my_table_array("market");
     foreach($marts as $val) {
