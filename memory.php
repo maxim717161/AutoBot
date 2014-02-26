@@ -14,7 +14,7 @@ class ABMemory {
     $this ->db_name = $db_name;
     $this ->db_user = $db_user;
     $this ->db_pass = $db_pass;
-    $this->Tables [ "ticks" ] = array ( "time" => "timestamp" , "idMarket" => "int(11)" , "vAsk" => "double" , "vBid" =>"double" , "pOpen" => "double" , "pHigh" =>"double", "pLow" =>"double", "pClose" =>"double", "PRIMARY KEY" => "(time,idMarket)");
+    $this->Tables [ "ticks" ] = array ( "time" => "int(11)" , "idMarket" => "int(11)" , "vAsk" => "double" , "vBid" =>"double" , "pOpen" => "double" , "pHigh" =>"double", "pLow" =>"double", "pClose" =>"double", "PRIMARY KEY" => "(time,idMarket)");
     $this->Tables [ "users" ] = array ( "email" =>"char(255)" , "pass" => "char(255)" , "uStatus" => "char(12)" , "lastEnter" => "datetime" , "PRIMARY KEY" => "(email)");
     $this->Tables ["market"] = array("idMarket"=>"int(11)", "nameBurse" => "char(33)", "typeAPI" => "char(33)", "urlTicker" => "text", "urlTrades" => "text", "urlFee" => "text", "urlDepth" => "text", "urlInfo" => "text", "PRIMARY KEY" => "(idMarket)");
   }
