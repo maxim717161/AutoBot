@@ -14,7 +14,7 @@ class ABMemory {
     $this ->db_name = $db_name;
     $this ->db_user = $db_user;
     $this ->db_pass = $db_pass;
-    $this->Tables [ "ticks" ] = array ( "time" => "int(11)" , "idMarket" => "int(11)" , "vAsk" => "double" , "vBid" =>"double" , "pOpen" => "double" , "pHigh" =>"double", "pLow" =>"double", "pClose" =>"double", "PRIMARY KEY" => "(time,idMarket)");
+    $this->Tables [ "ticks" ] = array ( "time" => "unsigned int(11)" , "idMarket" => "int(11)" , "vAsk" => "double" , "vBid" =>"double" , "pOpen" => "double" , "pHigh" =>"double", "pLow" =>"double", "pClose" =>"double", "PRIMARY KEY" => "(time,idMarket)");
     $this->Tables [ "users" ] = array ( "email" =>"char(255)" , "pass" => "char(255)" , "uStatus" => "char(12)" , "lastEnter" => "datetime" , "PRIMARY KEY" => "(email)");
     $this->Tables ["market"] = array("idMarket"=>"int(11)", "nameBurse" => "char(33)", "typeAPI" => "char(33)", "urlTicker" => "text", "urlTrades" => "text", "urlFee" => "text", "urlDepth" => "text", "urlInfo" => "text", "PRIMARY KEY" => "(idMarket)");
   }
@@ -85,9 +85,11 @@ class ABMemory {
       mysql_free_result($result);
       foreach($editTables as $key1 => $val1) {
         $result =$this->my_query("SHOW FIELDS FROM ".$key1);
-        for( $tbl =array (), $pk=array(); $row =mysql_fetch_row ($result );$tbl[$row[0]]=$row[1]){
+        for( $tbl =array (), $pk=array(), $aa = array(); $row =mysql_fetch_row ($result );$tbl[$row[0]]=$row[1]){
           if($row[3]=="PRI") $pk[]=$row[0];
+          $aa[]=$row;
         }
+        print_r($aa);
         if(count($pk) >0) $tbl["PRIMARY KEY"] = "(".implode(",",$pk).")";
         mysql_free_result($result);
         $diffCols = array_diff_assoc($val1, $tbl);
