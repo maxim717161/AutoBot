@@ -23,7 +23,7 @@ class ABMemory {
     $marts = $this->my_table_array("market");
     print_r($marts);
     foreach($marts as $mart) {
-      $btc_usd = $this -> retrieveJSON($mart['urlTrades']);
+      $btc_usd = $this -> retrieveJSON($mart[3]);
       $ticks = array();
       foreach($btc_usd as $val) {
         if(!isset($ticks[$val['date']]['pClose'])) {
@@ -41,7 +41,7 @@ class ABMemory {
         $ticks[$val['date']][$val['trade_type']] += $val['amount'];
       }
       foreach($ticks as $key => $val) {
-        $this -> my_query("INSERT INTO ticks VALUES(".$key.",".$mart['idMarket'].",".$val['ask'].",".$val['bid'].",".$val['pOpen'].",".$val['pHigh'].",".$val['pLow'].",".$val['pClose'].")");
+        $this -> my_query("INSERT INTO ticks VALUES(".$key.",".$mart[0].",".$val['ask'].",".$val['bid'].",".$val['pOpen'].",".$val['pHigh'].",".$val['pLow'].",".$val['pClose'].")");
       }
     }
   }
