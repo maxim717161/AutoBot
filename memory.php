@@ -15,12 +15,13 @@ class ABMemory {
     $this ->db_user = $db_user;
     $this ->db_pass = $db_pass;
     $this->Tables [ "ticks" ] = array ( "time" => "int(11) unsigned" , "idMarket" => "int(11) unsigned" , "vAsk" => "double unsigned" , "vBid" =>"double unsigned" , "pOpen" => "double unsigned" , "pHigh" =>"double unsigned", "pLow" =>"double unsigned", "pClose" =>"double unsigned", "PRIMARY KEY" => "(time,idMarket)");
-    $this->Tables [ "users" ] = array ( "email" =>"varchar(255) binary" , "pass" => "varchar(255)" , "uStatus" => "varchar(12) binary" , "lastEnter" => "int(11) unsigned" , "PRIMARY KEY" => "(email)");
-    $this->Tables ["market"] = array("idMarket"=>"int(11) unsigned", "nameBurse" => "varchar(33)", "typeAPI" => "varchar(33)", "urlTicker" => "varchar(255) binary", "urlTrades" => "varchar(255) binary", "urlFee" => "varchar(255) binary", "urlDepth" => "varchar(255) binary", "urlInfo" => "varchar(255) binary", "PRIMARY KEY" => "(idMarket)");
+    $this->Tables [ "users" ] = array ( "email" =>"varchar(255)" , "pass" => "varchar(255)" , "uStatus" => "varchar(12)" , "lastEnter" => "int(11) unsigned" , "PRIMARY KEY" => "(email)");
+    $this->Tables ["market"] = array("idMarket"=>"int(11) unsigned", "nameBurse" => "varchar(33)", "typeAPI" => "varchar(33)", "urlTicker" => "varchar(255)", "urlTrades" => "varchar(255)", "urlFee" => "varchar(255)", "urlDepth" => "varchar(255)", "urlInfo" => "varchar(255)", "PRIMARY KEY" => "(idMarket)");
   }
   
   public function newTicks() {
     $marts = $this->my_table_array("market");
+    print_r($marts);
     foreach($marts as $mart) {
       $btc_usd = $this -> retrieveJSON($mart['urlTrades']);
       $ticks = array();
