@@ -21,8 +21,8 @@ class ABMemory {
   
   public function newTicks() {
     $marts = $this->my_table_array("market");
-    print_r($marts);
     foreach($marts as $mart) {
+      print_r($mart);
       $btc_usd = $this -> retrieveJSON($mart['urlTrades']);
       print_r($btc_usd);
       $ticks = array();
