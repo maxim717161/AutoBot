@@ -33,7 +33,8 @@ class ABMemory {
           $ticks[$val['date']]['pHigh'] = $val['price'];
           $ticks[$val['date']]['pLow'] = $val['price'];
           $ticks[$val['date']]['tidClose'] = $val['tid'];
-        } else {'price'];
+        } else {
+          $ticks[$val['date']]['pOpen'] = $val['price'];
           if($ticks[$val['date']]['pHigh'] < $val['price']) $ticks[$val['date']]['pHigh'] = $val['price'];
           if($ticks[$val['date']]['pLow'] > $val['price']) $ticks[$val['date']]['pLow'] = $val['price'];
         }
