@@ -33,8 +33,7 @@ class ABMemory {
           $ticks[$val['date']]['pHigh'] = $val['price'];
           $ticks[$val['date']]['pLow'] = $val['price'];
           $ticks[$val['date']]['tidClose'] = $val['tid'];
-        } else {
-          $ticks[$val['date']]['pOpen'] = $val['price'];
+        } else {'price'];
           if($ticks[$val['date']]['pHigh'] < $val['price']) $ticks[$val['date']]['pHigh'] = $val['price'];
           if($ticks[$val['date']]['pLow'] > $val['price']) $ticks[$val['date']]['pLow'] = $val['price'];
         }
@@ -53,7 +52,7 @@ class ABMemory {
   }
   
   protected function my_table_array($table, $columns = "*", $where = "") {
-    if($where !=== "") $where = " WHERE ".$where;
+    if($where != "") $where = " WHERE ".$where;
     $result = $this -> my_query ( "SELECT " . $columns . " FROM " . $table.$where);
     for( $my_table = array (); $row = mysql_fetch_assoc ( $result ); $my_table[] =$row){}
     mysql_free_result ( $result );
