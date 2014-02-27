@@ -23,7 +23,8 @@ class ABMemory {
     $marts = $this->my_table_array("market");
     print_r($marts);
     foreach($marts as $mart) {
-      $btc_usd = $this -> retrieveJSON($mart[3]);
+      $btc_usd = $this -> retrieveJSON($mart['urlTrades']);
+      print_r($btc_usd);
       $ticks = array();
       foreach($btc_usd as $val) {
         if(!isset($ticks[$val['date']]['pClose'])) {
@@ -41,14 +42,14 @@ class ABMemory {
         $ticks[$val['date']][$val['trade_type']] += $val['amount'];
       }
       foreach($ticks as $key => $val) {
-        $this -> my_query("INSERT INTO ticks VALUES(".$key.",".$mart[0].",".$val['ask'].",".$val['bid'].",".$val['pOpen'].",".$val['pHigh'].",".$val['pLow'].",".$val['pClose'].")");
+        $this -> my_query("INSERT INTO ticks VALUES(".$key.",".$mart['idMarket'].",".$val['ask'].",".$val['bid'].",".$val['pOpen'].",".$val['pHigh'].",".$val['pLow'].",".$val['pClose'].")");
       }
     }
   }
   
   protected function my_table_array($table, $columns = "*") {
     $result = $this -> my_query ( "SELECT " . $columns . " FROM " . $table);
-    for( $my_table = array (); $row = mysql_fetch_row ( $result ); $my_table[] =$row){}
+    for( $my_table = array (); $row = mysql_fetch_assoc ( $result ); $my_table[] =$row){}
     mysql_free_result ( $result );
     return $my_table;
   }
