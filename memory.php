@@ -14,17 +14,15 @@ class ABMemory {
     $this ->db_name = $db_name;
     $this ->db_user = $db_user;
     $this ->db_pass = $db_pass;
-    $this->Tables [ "ticks" ] = array ( "time" => "int(11) unsigned" , "idMarket" => "int(11) unsigned" , "vAsk" => "double unsigned" , "vBid" =>"double unsigned" , "pOpen" => "double unsigned" , "pHigh" =>"double unsigned", "pLow" =>"double unsigned", "pClose" =>"double unsigned", "PRIMARY KEY" => "(time,idMarket)");
+    $this->Tables [ "ticks" ] = array ( "time" => "int(11) unsigned" , "idMarket" => "int(11) unsigned" , "vAsk" => "double unsigned" , "vBid" =>"double unsigned" , "pOpen" => "double unsigned" , "pHigh" =>"double unsigned", "pLow" =>"double unsigned", "pClose" =>"double unsigned", "tidClose" =>"int(11) unsigned","PRIMARY KEY" => "(time,idMarket)");
     $this->Tables [ "users" ] = array ( "email" =>"varchar(255)" , "pass" => "varchar(255)" , "uStatus" => "varchar(12)" , "lastEnter" => "int(11) unsigned" , "PRIMARY KEY" => "(email)");
     $this->Tables ["market"] = array("idMarket"=>"int(11) unsigned", "nameBurse" => "varchar(33)", "typeAPI" => "varchar(33)", "urlTicker" => "varchar(255)", "urlTrades" => "varchar(255)", "urlFee" => "varchar(255)", "urlDepth" => "varchar(255)", "urlInfo" => "varchar(255)", "PRIMARY KEY" => "(idMarket)");
   }
   
   public function newTicks() {
-    $marts = $this->my_table_array("market");
+    $marts = $this->my_table_array("market","idMarket,urlTrades");
     foreach($marts as $mart) {
-      print_r($mart);
       $btc_usd = $this -> retrieveJSON($mart['urlTrades']);
-      print_r($btc_usd);
       $ticks = array();
       foreach($btc_usd as $val) {
         if(!isset($ticks[$val['date']]['pClose'])) {
@@ -34,6 +32,7 @@ class ABMemory {
           $ticks[$val['date']]['pOpen'] = $val['price'];
           $ticks[$val['date']]['pHigh'] = $val['price'];
           $ticks[$val['date']]['pLow'] = $val['price'];
+          $ticks[$val['date']]['tidClose'] = $val['tid'];
         } else {
           $ticks[$val['date']]['pOpen'] = $val['price'];
           if($ticks[$val['date']]['pHigh'] < $val['price']) $ticks[$val['date']]['pHigh'] = $val['price'];
@@ -41,14 +40,21 @@ class ABMemory {
         }
         $ticks[$val['date']][$val['trade_type']] += $val['amount'];
       }
+      $result = $this->my_query("SELECT time,idMarket,vAsk,vBid,tidClose FROM ticks WHERE time IN (".implode(",",array_keys($ticks)).") AND idMarket = ".$mart['idMarket']);
+      for($exTrades = array();$row = mysql_fetch_row ( $result ); $exTrades [$row [ 0 ]] =$row);
       foreach($ticks as $key => $val) {
-        $this -> my_query("INSERT INTO ticks VALUES(".$key.",".$mart['idMarket'].",".$val['ask'].",".$val['bid'].",".$val['pOpen'].",".$val['pHigh'].",".$val['pLow'].",".$val['pClose'].")");
+        if(!array_key_exists ( $key , $exTrades )) {
+          $this -> my_query("INSERT INTO ticks VALUES(".$key.",".$mart['idMarket'].",".$val['ask'].",".$val['bid'].",".$val['pOpen'].",".$val['pHigh'].",".$val['pLow'].",".$val['pClose'].",".$val['tidClose'].")");
+        } else {
+          // сверяем пересечения
+        }
       }
     }
   }
   
-  protected function my_table_array($table, $columns = "*") {
-    $result = $this -> my_query ( "SELECT " . $columns . " FROM " . $table);
+  protected function my_table_array($table, $columns = "*", $where = "") {
+    if($where !=== "") $where = " WHERE ".$where;
+    $result = $this -> my_query ( "SELECT " . $columns . " FROM " . $table.$where);
     for( $my_table = array (); $row = mysql_fetch_assoc ( $result ); $my_table[] =$row){}
     mysql_free_result ( $result );
     return $my_table;
