@@ -40,13 +40,41 @@ class ABMemory {
         }
         $ticks[$val['date']][$val['trade_type']] += $val['amount'];
       }
-      $result = $this->my_query("SELECT time,idMarket,vAsk,vBid,tidClose FROM ticks WHERE time IN (".implode(",",array_keys($ticks)).") AND idMarket = ".$mart['idMarket']);
+      $result = $this->my_query("SELECT * FROM ticks WHERE time IN (".implode(",",array_keys($ticks)).") AND idMarket = ".$mart['idMarket']);
       for($exTrades = array();$row = mysql_fetch_row ( $result ); $exTrades [$row [ 0 ]] =$row);
       foreach($ticks as $key => $val) {
         if(!array_key_exists ( $key , $exTrades )) {
           $this -> my_query("INSERT INTO ticks VALUES(".$key.",".$mart['idMarket'].",".$val['ask'].",".$val['bid'].",".$val['pOpen'].",".$val['pHigh'].",".$val['pLow'].",".$val['pClose'].",".$val['tidClose'].")");
         } else {
           // сверяем пересечения
+          if($val['tidClose'] > $exTrades[$key]['tidClose']) {
+            $add = array();
+            foreach($btc_usd as $val1) {
+              if($val1['tid'] > $exTrades[$key]['tidClose'] & $val1['date'] == $key) {
+                if (! isset ( $add[ 'pClose' ])) {
+                  $add['bid'] = 0;
+                  $add[ 'ask' ] = 0;
+                  $add[ 'pHigh' ] = $val1[ 'price' ];
+                  $add[ 'pLow' ] = $val1[ 'price' ];
+                  $add['pClose'] = $val1['price'];
+                  $add[ 'tidClose' ] = $val1 [ 'tid' ];
+                } else {
+                  if($add['pHigh' ] < $val1 [ 'price' ]) $add[ 'pHigh' ] = $val1 [ 'price' ];
+                  if( $add['pLow' ] > $val1 ['price' ]) $add['pLow' ] = $val1 [ 'price' ];
+                }
+                $add[$val1 [ 'trade_type' ]] += $val1 ['amount' ];
+              } else {
+                break;
+              }
+            }
+            $exTrades[$key]['vAsk'] += $add['ask'];
+            $exTrades[$key]['vBid'] += $add['bid'];
+            $exTrades[$key]['pClose'] = $add['pClose'];
+            $exTrades[$key]['tidClose'] = $add['tidClose'];
+            if($exTrades[$key]['pHigh'] < $add['pHigh']) $exTrades[$key]['pHigh'] = $add['pHigh'];
+            if($exTrades[$key]['pLow'] > $add['pLow']) $exTrades[$key]['pLow'] = $add['pLow'];
+            $this->my_query("UPDATE ticks SET vAsk=".$exTrades[$key]['vAsk'].",vBid=".$exTrades[$key]['vBid'].",pHigh=".$exTrades[$key]['pHigh'].",vLow=".$exTrades[$key]['pLow'].",pClose=".$exTrades[$key]['pClose'].",tidClose=".$exTrades[$key]['tidClose']." WHERE time=".$key." & idMarket=".$mart['idMarket']);
+          }
         }
       }
     }
