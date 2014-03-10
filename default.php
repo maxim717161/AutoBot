@@ -1,7 +1,9 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" class="no-js">
 <head>
-<meta charset= "utf-8" >
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
+<link rel="icon" href="/favicon.ico?2" type="image/x-icon"/>
+<link rel="shortcut icon" href="/favicon.ico?2" type="image/x-icon"/>
 <title> AutoBot &Alpha;&amp;&Omega; v0.0.1 </title>
 <style>
 .m {
