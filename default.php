@@ -9,12 +9,12 @@
 <body>
 <table style="height:100%;" border="0" width="100%" cellpadding="0" cellspacing="0">
 <tr><td valign="top" align="center"> <h1><span style="color:red;">Auto</span>Bot <span style="colr:green;">&Alpha;&amp;&Omega;</span></h1> </td></tr>
-<tr><td valign="top" align="justify"> <span style="color:red;">25:27</span> посему надлежало тебе отдать серебро мое торгующим, и я, придя, получил бы мое с прибылью; <i>(Евангелие от Матфея)</i></td>
+<tr><td valign="top" align="justify"> <span style="color:red;">25:27</span> <b>посему надлежало тебе отдать серебро мое торгующим, и я, придя, получил бы мое с прибылью;</b> <i>(Евангелие от Матфея)</i></td>
 <tr><td valign="middle" align="center"> 
-<img src="http://dc-charts.com/fw/250_btce_btc_usd_d1_1.png" alt="BTC-E bitcoin price chart" title="BTC-E BTC/USD price chart - http://dc-charts.com" width="250" height="160" border="0" /><br/>
+<br/><img src="http://dc-charts.com/fw/250_btce_btc_usd_d1_1.png" alt="BTC-E bitcoin price chart" title="BTC-E BTC/USD price chart - http://dc-charts.com" width="250" height="160" border="0" /><br/><br/>
 <a class="k" href="heart.php"> Вход </a><br/> </td></tr>
-<tr><td valign="bottom" align="center"><p>&copy; 2014 <span style="color:red;">Auto</span>Bot <span style="color:green;" >&Alpha;&amp;&Omega;</span>,
-<span style="color:silver;">maxim.bagno</span></p></td></tr>
+<tr><td valign="bottom" align="center">&copy; 2014 <span style="color:red;">Auto</span>Bot <span style="color:green;" >&Alpha;&amp;&Omega;</span>,
+<span style="color:silver;">maxim.bagno</span></td></tr>
 </table>
 </body>
 </html>
