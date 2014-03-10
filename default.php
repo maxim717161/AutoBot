@@ -7,17 +7,14 @@
 <title> AutoBot &Alpha;&amp;&Omega; v0.0.1</title>
 </head>
 <body>
-<table class="m">
-<tr><td class="top"> <h1><span class="r">Auto</span>Bot <span class="g">&Alpha;&amp;&Omega;</span></h1> </td></tr>
-<tr><td class="mid">
-<p class="p"><span class="r">25:27</span> посему надлежало тебе отдать серебро мое торгующим, и я, придя,
-получил бы мое с прибылью; <i>(Евангелие от Матфея)</i></p></td>
-<tr><td class="mid"> 
-<img src="http://dc-charts.com/fw/250_btce_btc_usd_d1_1.png" alt="BTC-E bitcoin price chart" title="BTC-E BTC/USD price chart - http://dc-charts.com" width="250" height="160" border="0" /><br>
-<img src="http://dc-charts.com/fw/250_btcchina_btc_cny_d1_1.png" alt="BTCChina bitcoin price chart" title="BTCChina BTC/CNY price chart - http://dc-charts.com" width="250" height="160" border="0" /><br>
+<table style="height:100%;" border="0" width="100%" cellpadding="0" cellspacing="0">
+<tr><td valign="top" align="center"> <h1><span style="color:red;">Auto</span>Bot <span style="colr:green;">&Alpha;&amp;&Omega;</span></h1> </td></tr>
+<tr><td valign="top" align="justify"> <span style="color:red;">25:27</span> посему надлежало тебе отдать серебро мое торгующим, и я, придя, получил бы мое с прибылью; <i>(Евангелие от Матфея)</i></td>
+<tr><td valign="middle" align="center"> 
+<img src="http://dc-charts.com/fw/250_btce_btc_usd_d1_1.png" alt="BTC-E bitcoin price chart" title="BTC-E BTC/USD price chart - http://dc-charts.com" width="250" height="160" border="0" /><br/>
 <a class="k" href="heart.php"> Вход </a><br/> </td></tr>
-<tr><td class="bot"><p>&copy; 2014 <span class="r">Auto</span>Bot <span class="g" >&Alpha;&amp;&Omega;</span>,
-<span class="s">maxim.bagno</span></p></td></tr>
+<tr><td valign="bottom" align="center"><p>&copy; 2014 <span style="color:red;">Auto</span>Bot <span style="color:green;" >&Alpha;&amp;&Omega;</span>,
+<span style="color:silver;">maxim.bagno</span></p></td></tr>
 </table>
 </body>
 </html>
