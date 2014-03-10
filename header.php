@@ -6,8 +6,8 @@
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 <title> AutoBot &Alpha;&amp;&Omega; v0.0.1</title>
 </head>
-<body>
-<table style="height:100%;" border="1" width="100%" cellpadding="0" cellspacing="0" height="100%">
+<body style="height:100%;">
+<table style="height:100%;" border="0" width="100%" cellpadding="0" cellspacing="0">
 <tr><td valign="top" align="center"> 
 <h1><span style="color:red;">Auto</span>Bot <span style="colr:green;">&Alpha;&amp;&Omega;</span></h1>
 </td></tr>
