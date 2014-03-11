@@ -1,6 +1,9 @@
 AutoBot
 =======
+Automatic Bot for trading. All documentation in Russian.
 
-Automatic Bot for trading
+Программный комплекс для торговли. Интерфейс стилизован под Mete Trader 4 mobile.
+=======
+Версии:
 
 v 0.0.1 Trading btc/usd on btc-e.com
