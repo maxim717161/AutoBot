@@ -10,7 +10,7 @@
 <tr><td>Пароль:</td>
 <td colspan="2"><input type="password" id="parole"/></td></tr>
 <tr><td>Новый?</td>
-<td width="10"><input type="checkbox" id="isreg" onchange="document.getElementById('email').value=document.getElementById('isreg').value;if(document.getElementById( 'isreg' ).value){document.getElementById( 'button' ).value='Регистрция'}else{document.getElementById( 'button' ).value='Войти'}"/></td>
+<td width="10"><input type="checkbox" id="isreg" onclick="document.getElementById('email').value=document.getElementById('isreg').value" onchange="document.getElementById('email').value=document.getElementById('isreg').value;if(document.getElementById( 'isreg' ).value){document.getElementById( 'button' ).value='Регистрция'}else{document.getElementById( 'button' ).value='Войти'}"/></td>
 <td align="center"><input type="submit" id="button" value="Войти"/></td></tr>
 </table></form>
 <br/>
