@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8"/>
 <link rel="icon" href="favicon.ico" type="image/x-icon"/>
 <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
-<title> AutoBot &Alpha;&amp;&Omega; v0.0.1</title>
+<title> AutoBot &Alpha;&amp;&Omega; <?php if(isset($pageName) && $pageName != "") {echo $pageName;} else {echo "v0.0.1";}</title>
 </head>
 <body>
 <table border="0" width="100%" cellpadding="0" cellspacing="0">
