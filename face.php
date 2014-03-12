@@ -3,7 +3,7 @@
 <tr><td valign="top" align="center">
 <?php 
 //if(isset($_POST['button'])){
-  print_r($_POST);
+  echo $_POST['login'].$_POST['email'].$_POST['parole'].$_POST['button'].$_POST['isreg'];
 //}
 ?>
 <br/>
