@@ -2,9 +2,9 @@
 <tr><td valign="top" align="justify"> <span style="color:red;"><b>13:12</b></span> Теперь мы видим как бы сквозь тусклое стекло, гадательно, тогда же лицем к лицу; теперь знаю я отчасти, а тогда позна'ю, подобно как я познан. <b><i>(Первое послание к Коринфянам святого апостола Павла)</i></b></td>
 <tr><td valign="top" align="center">
 <?php 
-if(isset($_POST['button'])){
+//if(isset($_POST['button'])){
   print_r($_POST);
-}
+//}
 ?>
 <br/>
 <form  id="login" action ="face.php" method= "post">
