@@ -47,7 +47,7 @@ require("header.php");
 <tr><td>Пароль:</td>
 <td colspan="2"><input type="password" id="parole" name="parole" maxlenght="255" <?php if(isset($parole)){echo " value='".$parole."'";} ?>/></td></tr>
 <tr><td>Новый?</td>
-<td width="10"><input type="checkbox" id="isreg" name="isreg" style="border:3px double black;" <?php if(isset($isreg) && ($isreg == true)){echo " checked"} ?>/></td>
+<td width="10"><input type="checkbox" id="isreg" name="isreg" style="border:3px double black;" <?php if(isset($isreg) && ($isreg == true)){echo " checked";} ?>/></td>
 <td align="center"><input type="submit" id="button" name="button" value="Отправить"/></td></tr>
 </table></form>
 <br/>
