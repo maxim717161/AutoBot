@@ -1,4 +1,5 @@
 <?php
+require_once("keys.php");
 class ABMemory {
   protected $db_host;
   protected $db_name;
@@ -9,7 +10,7 @@ class ABMemory {
   protected $QUERY_FAILED = "Could not successfully run query from DB: ";
   protected $Tables = array();
   
-  public function __construct ( $db_host , $db_name , $db_user, $db_pass) {
+  public function __construct ( $db_host = $ab_db_host, $db_name = $ab_db_name, $db_user = $ab_db_user, $db_pass = $ab_db_pass) {
     $this ->db_host = $db_host;
     $this ->db_name = $db_name;
     $this ->db_user = $db_user;
@@ -17,6 +18,10 @@ class ABMemory {
     $this->Tables [ "ticks" ] = array ( "time" => "int(11) unsigned" , "idMarket" => "int(11) unsigned" , "vAsk" => "double unsigned" , "vBid" =>"double unsigned" , "pOpen" => "double unsigned" , "pHigh" =>"double unsigned", "pLow" =>"double unsigned", "pClose" =>"double unsigned", "tidClose" =>"int(11) unsigned","PRIMARY KEY" => "(time,idMarket)");
     $this->Tables [ "users" ] = array ( "email" =>"varchar(255)" , "pass" => "varchar(255)" , "uStatus" => "varchar(12)" , "lastEnter" => "int(11) unsigned" , "PRIMARY KEY" => "(email)");
     $this->Tables ["market"] = array("idMarket"=>"int(11) unsigned", "nameBurse" => "varchar(33)", "typeAPI" => "varchar(33)", "urlTicker" => "varchar(255)", "urlTrades" => "varchar(255)", "urlFee" => "varchar(255)", "urlDepth" => "varchar(255)", "urlInfo" => "varchar(255)", "PRIMARY KEY" => "(idMarket)");
+  }
+  
+  public function getUser() {
+    
   }
   
   public function newTicks() {
