@@ -27,7 +27,21 @@ if(isset($_POST['button'])) {
     $isreg = false;
   }
   if(!$isError) {
-    
+    $myMemory = new ABMemory();
+    try {
+      $myMemory -> connectMySQL();
+      $user = $myMemory -> getUser($email);
+    } catch(Exception $e) {
+      $isError = true;
+      $erStr = $e -> getMessage();
+    }
+    if(!$isError) {
+      if($isreg) {
+        
+      } else {
+        
+      }
+    }
   } else {
     $pageName = " :: Re-Enter";
   }
