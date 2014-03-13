@@ -21,6 +21,14 @@ class ABMemory {
   }
   
   public function getUser($userEmail) {
+    $this->my_table_array("users","*","email=".$email);
+  }
+  
+  public function updUserEnter() {
+    
+  }
+  
+  public function addNewUser($email, $pass) {
     
   }
   
