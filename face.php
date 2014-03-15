@@ -58,7 +58,7 @@ if(isset($_POST['login'])) {
       if(!isset($user)) $erStr .= " Неизвестная ошибка. Обратитесь <a href='support.php'>службу поддержки</a>.";
     } 
   } 
-  if(isError) {
+  if($isError) {
     $pageName = PN_REENT;
   }
 }
