@@ -61,9 +61,23 @@ if(isset($_POST['login'])) {
 require("header.php"); 
 switch($pageName) {
 case PN_ENTER:
+  $numPos = "13:12";
+  $txtPos = "Теперь мы видим как бы сквозь тусклое стекло, гадательно, тогда же лицем к лицу; теперь знаю я отчасти, а тогда позна'ю, подобно как я познан.";
+  $autPos = "Первое послание к Коринфянам святого апостола Павла";
+  break;
 case PN_REENT:
+  $numPos = "";
+  $txtPos = "";
+  $autPos = "";
+  break;
+case PN_CONPAS:
+  $numPos = "4:22";
+  $txtPos = "Нет ничего тайного, что не сделалось бы явным, и ничего не бывает потаенного, что не вышло бы наружу.";
+  $uatPos = "От Марка святое Благовествование";
+  break;
+}
 ?>
-<tr><td valign="top" align="justify"> <span style="color:red;"><b>13:12</b></span> Теперь мы видим как бы сквозь тусклое стекло, гадательно, тогда же лицем к лицу; теперь знаю я отчасти, а тогда позна'ю, подобно как я познан. <b><i>(Первое послание к Коринфянам святого апостола Павла)</i></b></td>
+<tr><td valign="top" align="justify"> <span style="color:red;"><b><?php echo $numPos; ?></b></span> Теперь мы видим как бы сквозь тусклое стекло, гадательно, тогда же лицем к лицу; теперь знаю я отчасти, а тогда позна'ю, подобно как я познан. <b><i><?php echo $autPos; ?></i></b></td>
 <tr><td valign="top" align="center">
 <br/>
 <form  id="forma1" name="forma1" action ="face.php" method= "post">
