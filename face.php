@@ -1,4 +1,5 @@
 <?php
+require_once("memory.php");
 const PN_ENTER = " :: Enter";
 const PN_REENT = " :: Re-Enter";
 const PN_CONPAS = " :: Confirm Pass";
@@ -58,7 +59,6 @@ if(isset($_POST['login'])) {
   }
 }
 
-require("header.php"); 
 switch($pageName) {
 case PN_ENTER:
   $numPos = "13:12";
@@ -112,6 +112,7 @@ case PN_CONPAS:
   $forma .= "</table></form>";
   break;
 }
+require("header.php");
 ?>
 <tr><td valign="top" align="justify"> <span style="color:red;"><b><?php echo $numPos; ?></b></span> <?php echo $txtPos; ?> <b><i><?php echo $autPos; ?></i></b></td>
 <tr><td valign="top" align="center">
