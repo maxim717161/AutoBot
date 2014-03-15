@@ -1,12 +1,8 @@
 <?php
-$ab_db_host = ""; // адрес базы данных
-$ab_db_name = ""; // имя базы данных
-$ab_db_user = ""; // пользователь базы данных
-$ab_db_pass = ""; // пароль к базе данных
-$ab_tmp1 = ""; // временные переменные для отладки
-$ab_tmp2 = ""; //
-$ab_tmp3 = ""; //
-$ab_tmp4 = ""; //
+const DB_HOST = "mysql.serversfree.com"; // адрес базы данных
+const DB_NAME = "u366911672_ab"; // имя базы данных
+const DB_USER = "u366911672_ab"; // пользователь базы данных
+const DB_PASS = "parole"; // пароль к базе данных
 
 function md5bin( $target ) {
   $md5 = md5(md5( $target ));
