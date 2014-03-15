@@ -10,11 +10,11 @@ class ABMemory {
   protected $QUERY_FAILED = "Could not successfully run query from DB: ";
   protected $Tables = array();
   
-  public function __construct ( $db_host = $ab_db_host, $db_name = $ab_db_name, $db_user = $ab_db_user, $db_pass = $ab_db_pass) {
-    $this ->db_host = $db_host;
-    $this ->db_name = $db_name;
-    $this ->db_user = $db_user;
-    $this ->db_pass = $db_pass;
+  public function __construct () {
+    $this ->db_host = DB_HOST;
+    $this ->db_name = DB_NAME;
+    $this ->db_user = DB_USER;
+    $this ->db_pass = DB_PASS;
     $this->Tables [ "ticks" ] = array ( "time" => "int(11) unsigned" , "idMarket" => "int(11) unsigned" , "vAsk" => "double unsigned" , "vBid" =>"double unsigned" , "pOpen" => "double unsigned" , "pHigh" =>"double unsigned", "pLow" =>"double unsigned", "pClose" =>"double unsigned", "tidClose" =>"int(11) unsigned","PRIMARY KEY" => "(time,idMarket)");
     $this->Tables [ "users" ] = array ( "email" =>"varchar(255)" , "pass" => "char(32)" , "uStatus" => "varchar(12)" , "lastEnter" => "int(11) unsigned" , "PRIMARY KEY" => "(email)");
     $this->Tables ["market"] = array("idMarket"=>"int(11) unsigned", "nameBurse" => "varchar(33)", "typeAPI" => "varchar(33)", "urlTicker" => "varchar(255)", "urlTrades" => "varchar(255)", "urlFee" => "varchar(255)", "urlDepth" => "varchar(255)", "urlInfo" => "varchar(255)", "PRIMARY KEY" => "(idMarket)");
