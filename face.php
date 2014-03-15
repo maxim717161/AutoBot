@@ -99,6 +99,17 @@ case PN_REENT:
   $forma .= "<td align='center'><input type='submit' id='login' name='login' value='Отправить'/></td></tr></table></form>";
   break;
 case PN_CONPAS:
+  $forma = "<form  id='forma2' name='forma2' action ='face.php' method='post'>";
+  $forma .= "<table border='0'>";
+  $forma .= "<tr><td colspan='2' align='center'><b>Подтверждение пароля</b></td></tr>";
+  if(isset($isError)&&$isError) {$forma .= "<tr><td colspan='2' align='center' style='border:1px solid red;'><span style='color:red;'>".$erStr."</span></td></tr>";
+  $forma .= "<tr><td>Пароль:</td>";
+  $forma .= "<td><input type='password' id='parole2' name='parole2' maxlenght='255'";
+  if(isset($parole2)){$forma .= " value='".$parole2."'";}
+  $forma .= "/></td></tr>";
+  $forma .= "<tr><td>&nbsp;<input type='hidden' id='parole' name='parole' value='".$parole."'/></td>";
+  $forma .= "<td align='center'><input type='submit' id='conpas' name='conpas' value='Отправить'/></td></tr>";
+  $forma .= "</table></form>";
   break;
 }
 ?>
@@ -108,21 +119,4 @@ case PN_CONPAS:
 <?php echo $forma; ?>
 <br/>
 </td></tr>
-<tr><td valign="top" align="justify"> <span style="color:red;"><b>4:22</b></span>  Нет ничего тайного, что не сделалось бы явным, и ничего не бывает потаенного, что не вышло бы наружу. <b><i>(От Марка святое Благовествование)</i></b></td>
-<tr><td valign="top" align="center">
-<br/>
-<form  id="forma2" name="forma2" action ="face.php" method= "post">
-<table border="0">
-<tr><td colspan="2" align="center"><b>Подтверждение пароля</b></td></tr>
-<?php if(isset($isError)&&$isError) echo "<tr><td colspan='2' align='center' style='border:1px solid red;'><span style='color:red;'>$erStr</span></td></tr>"; ?>
-<tr><td>Пароль:</td>
-<td><input type="password" id="parole2" name="parole2" maxlenght="255" <?php if(isset($parole2)){echo " value='".$parole2."'";} ?>/></td></tr>
-<tr><td>&nbsp;<input type="hidden" id="parole" name="parole" <?php echo "value='".$parole."'"; ?>/></td>
-<td align="center"><input type="submit" id="conpas" name="conpas" value="Отправить"/></td></tr>
-</table></form>
-<br/>
-</td></tr>
-<?php 
-}
-require("footer.php"); 
-?>
+<?php require("footer.php"); ?>
