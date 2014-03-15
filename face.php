@@ -76,28 +76,38 @@ case PN_CONPAS:
   $uatPos = "От Марка святое Благовествование";
   break;
 }
+
+switch($pageName) {
+case PN_ENTER:
+case PN_REENT:
+  $forma = "<form  id='forma1' name='forma1' action ='face.php' method= 'post'>";
+  $forma .= "<table border='0'>";
+  $forma .= "<tr><td colspan='3' align='center'><b>Вход / Регистрация</b></td></tr>";
+  if(isset($isError)&&$isError) {$forma .= "<tr><td colspan='3' align='center' style='border:1px solid red;'><span style='color:red;'>".$erStr."</span></td></tr>";}
+  $forma .= "<tr><td>Е-майл:</td>";
+  $forma .= "<td colspan='2'><input type='text' id='email' name='email' maxlenght='255'";
+  if(isset($email)) {$forma .= " value='".$email."'";} 
+  $forma .= "/></td></tr>";
+  $forma .= "<tr><td>Пароль:</td>";
+  $forma .= "<td colspan='2'><input type='password' id='parole' name='parole' maxlenght='255'";
+  if(isset($parole)) {$forma .= " value='".$parole."'";} 
+  $forma .= "/></td></tr>";
+  $forma .= "<tr><td>Новый?</td>";
+  $forma .= "<td width='10'><input type='checkbox' id='isreg' name='isreg' style='border:3px double black;'";
+  if(isset($isreg) && ($isreg == true)){$forma .= " checked";}
+  $forma .= "/></td>";
+  $forma .= "<td align='center'><input type='submit' id='login' name='login' value='Отправить'/></td></tr></table></form>";
+  break;
+case PN_CONPAS:
+  break;
+}
 ?>
-<tr><td valign="top" align="justify"> <span style="color:red;"><b><?php echo $numPos; ?></b></span> Теперь мы видим как бы сквозь тусклое стекло, гадательно, тогда же лицем к лицу; теперь знаю я отчасти, а тогда позна'ю, подобно как я познан. <b><i><?php echo $autPos; ?></i></b></td>
+<tr><td valign="top" align="justify"> <span style="color:red;"><b><?php echo $numPos; ?></b></span> <?php echo $txtPos; ?> <b><i><?php echo $autPos; ?></i></b></td>
 <tr><td valign="top" align="center">
 <br/>
-<form  id="forma1" name="forma1" action ="face.php" method= "post">
-<table border="0">
-<tr><td colspan="3" align="center"><b>Вход / Регистрация</b></td></tr>
-<?php if(isset($isError)&&$isError) echo "<tr><td colspan='3' align='center' style='border:1px solid red;'><span style='color:red;'>$erStr</span></td></tr>"; ?>
-<tr><td>Е-майл:</td>
-<td colspan="2"><input type="text" id="email" name="email" maxlenght="255"<?php if(isset($email)){echo " value='".$email."'";} ?>/></td></tr>
-<tr><td>Пароль:</td>
-<td colspan="2"><input type="password" id="parole" name="parole" maxlenght="255" <?php if(isset($parole)){echo " value='".$parole."'";} ?>/></td></tr>
-<tr><td>Новый?</td>
-<td width="10"><input type="checkbox" id="isreg" name="isreg" style="border:3px double black;" <?php if(isset($isreg) && ($isreg == true)){echo " checked";} ?>/></td>
-<td align="center"><input type="submit" id="login" name="login" value="Отправить"/></td></tr>
-</table></form>
+<?php echo $forma; ?>
 <br/>
 </td></tr>
-<?php
-break;
-case PN_CONPAS:
-?>
 <tr><td valign="top" align="justify"> <span style="color:red;"><b>4:22</b></span>  Нет ничего тайного, что не сделалось бы явным, и ничего не бывает потаенного, что не вышло бы наружу. <b><i>(От Марка святое Благовествование)</i></b></td>
 <tr><td valign="top" align="center">
 <br/>
