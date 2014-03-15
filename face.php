@@ -41,20 +41,24 @@ if(isset($_POST['login'])) {
       $isError = true;
       $erStr = $e -> getMessage();
     }
-    if(!$isError) {
+    if(!$isError && isset($user)) {
       if($isreg) {
-        if(isset($user) && count($user) == 0) {
+        if(count($user) == 0) {
           $parole = md5($parole);
           $pageName = PN_CONPAS;
-        } elseif(isset($user) && count($user) > 0) {
+        } else {
           $isError = true;
           $erStr .= " Пользователь с таким е-майлом [".$email."] уже зарегистрирован.";
+        } 
       } else {
-        $isError = true;
-        $erStr .= " Неизвестная ошибка. Обратитесь <a href='support.php'>службу поддержки</a>.";
+        
       }
-    }
-  } else {
+    } else {
+      $isError = true;
+      if(!isset($user)) $erStr .= " Неизвестная ошибка. Обратитесь <a href='support.php'>службу поддержки</a>.";
+    } 
+  } 
+  if(isError) {
     $pageName = PN_REENT;
   }
 }
