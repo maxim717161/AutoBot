@@ -80,7 +80,7 @@ case PN_CONPAS:
   $uatPos = "От Марка святое Благовествование";
   break;
 }
-
+/*
 switch($pageName) {
 case PN_ENTER:
 case PN_REENT:
@@ -115,7 +115,7 @@ case PN_CONPAS:
   $forma .= "<td align='center'><input type='submit' id='conpas' name='conpas' value='Отправить'/></td></tr>";
   $forma .= "</table></form>";
   break;
-}
+}*/
 require("header.php");
 ?>
 <tr><td valign="top" align="justify"> <span style="color:red;"><b><?php echo $numPos; ?></b></span> <?php echo $txtPos; ?> <b><i><?php echo $autPos; ?></i></b></td>
