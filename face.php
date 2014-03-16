@@ -6,7 +6,7 @@ const PN_CONPAS = " :: Confirm Pass";
 const PN_CONMAIL = " :: Confirm E-mail";
 const PN_MAINPAGE = " :: Main Page";
 $pageName = PN_ENTER;
-/*if(isset($_POST['login'])) {
+if(isset($_POST['login'])) {
   $isError = false;
   $erStr = "";
   if(empty($_POST['email'])) {
@@ -61,7 +61,7 @@ $pageName = PN_ENTER;
   if($isError) {
     $pageName = PN_REENT;
   }
-}*/
+}
 
 switch($pageName) {
 case PN_ENTER:
