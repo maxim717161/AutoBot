@@ -80,14 +80,14 @@ case PN_CONPAS:
   $uatPos = "От Марка святое Благовествование";
   break;
 }
-/*
+
 switch($pageName) {
 case PN_ENTER:
 case PN_REENT:
   $forma = "<form  id='forma1' name='forma1' action ='face.php' method= 'post'>";
   $forma .= "<table border='0'>";
   $forma .= "<tr><td colspan='3' align='center'><b>Вход / Регистрация</b></td></tr>";
-  if(isset($isError)&&$isError) {$forma .= "<tr><td colspan='3' align='center' style='border:1px solid red;'><span style='color:red;'>".$erStr."</span></td></tr>";}
+  if(isset($isError) && $isError) {$forma .= "<tr><td colspan='3' align='center' style='border:1px solid red;'><span style='color:red;'>".$erStr."</span></td></tr>";}
   $forma .= "<tr><td>Е-майл:</td>";
   $forma .= "<td colspan='2'><input type='text' id='email' name='email' maxlenght='255'";
   if(isset($email)) {$forma .= " value='".$email."'";} 
@@ -102,7 +102,7 @@ case PN_REENT:
   $forma .= "/></td>";
   $forma .= "<td align='center'><input type='submit' id='login' name='login' value='Отправить'/></td></tr></table></form>";
   break;
-case PN_CONPAS:
+/*case PN_CONPAS:
   $forma = "<form  id='forma2' name='forma2' action ='face.php' method='post'>";
   $forma .= "<table border='0'>";
   $forma .= "<tr><td colspan='2' align='center'><b>Подтверждение пароля</b></td></tr>";
@@ -114,8 +114,8 @@ case PN_CONPAS:
   $forma .= "<tr><td>&nbsp;<input type='hidden' id='parole' name='parole' value='".$parole."'/></td>";
   $forma .= "<td align='center'><input type='submit' id='conpas' name='conpas' value='Отправить'/></td></tr>";
   $forma .= "</table></form>";
-  break;
-}*/
+  break;*/
+}
 require("header.php");
 ?>
 <tr><td valign="top" align="justify"> <span style="color:red;"><b><?php echo $numPos; ?></b></span> <?php echo $txtPos; ?> <b><i><?php echo $autPos; ?></i></b></td>
