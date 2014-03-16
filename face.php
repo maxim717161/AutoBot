@@ -102,11 +102,11 @@ case PN_REENT:
   $forma .= "/></td>";
   $forma .= "<td align='center'><input type='submit' id='login' name='login' value='Отправить'/></td></tr></table></form>";
   break;
-/*case PN_CONPAS:
+  case PN_CONPAS:
   $forma = "<form  id='forma2' name='forma2' action ='face.php' method='post'>";
   $forma .= "<table border='0'>";
   $forma .= "<tr><td colspan='2' align='center'><b>Подтверждение пароля</b></td></tr>";
-  if(isset($isError)&&$isError) {$forma .= "<tr><td colspan='2' align='center' style='border:1px solid red;'><span style='color:red;'>".$erStr."</span></td></tr>";
+  if(isset($isError) && $isError) {$forma .= "<tr><td colspan='2' align='center' style='border:1px solid red;'><span style='color:red;'>".$erStr."</span></td></tr>";
   $forma .= "<tr><td>Пароль:</td>";
   $forma .= "<td><input type='password' id='parole2' name='parole2' maxlenght='255'";
   if(isset($parole2)){$forma .= " value='".$parole2."'";}
@@ -114,7 +114,7 @@ case PN_REENT:
   $forma .= "<tr><td>&nbsp;<input type='hidden' id='parole' name='parole' value='".$parole."'/></td>";
   $forma .= "<td align='center'><input type='submit' id='conpas' name='conpas' value='Отправить'/></td></tr>";
   $forma .= "</table></form>";
-  break;*/
+  break;
 }
 require("header.php");
 ?>
